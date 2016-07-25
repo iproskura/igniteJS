@@ -52,8 +52,8 @@ console.log(bubbleSort(inputArray));
 var bigToSmall = function (arr) {
     var result = [];
 
-    for (var i = 0; i < arr.length; i++){           //unwrapping
-        for(var j=0; j < arr[i].length; j++){
+    for (var i = 0; i < arr.length; i++) {           //unwrapping
+        for (var j = 0; j < arr[i].length; j++) {
             result.push(arr[i][j]);
         }
     }
