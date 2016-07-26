@@ -1,15 +1,3 @@
-// Задача 1.
-//
-// Напишите функцию, которая принимает 1 параметр. При первом вызове она его запоминает, при втором -
-// суммирует переданный параметр с параметром, переданным при предыдущем вызове.
-//
-//     Например:
-//
-// sum(3) = 3
-// sum(5) = 8
-// sum(228) = 236
-
-
 // Задача 2.
 //
 // Создайте функцию strCount, которая принимает один аргумент (объект) и считает количество свойств строкового типа.
@@ -24,6 +12,34 @@
 //     fifth:  null
 // })
 //возвращает 3
+
+var strCount = function (obj) {
+    var count = 0;
+    for (var i in obj) {
+        if (obj.hasOwnProperty(i) && (typeof obj[i] === "string")) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+
+var obj1 = {
+    first: "1",
+    second: "2",
+    third: false,
+    fourth: ["anytime", 2, 3, 4],
+    fifth: null
+};
+
+var obj2 = {
+    name: "vasya",
+    surname: "petrov"
+};
+
+console.log(strCount(obj1));
+console.log(strCount(obj2));
 
 
 // Задача 3.
