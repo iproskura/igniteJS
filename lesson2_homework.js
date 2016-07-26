@@ -26,15 +26,14 @@
 //возвращает 3
 
 
-
 // Задача 3.
 //
 // Напишите функцию, которая складывает числа при двойном вызове. Например:
 // add(3)(4)  // 7
 
 function add(a) {
-    return function(b){
-        return a+ b;
+    return function (b) {
+        return a + b;
     }
 }
 
