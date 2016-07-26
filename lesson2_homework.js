@@ -16,8 +16,16 @@
 var strCount = function (obj) {
     var count = 0;
     for (var i in obj) {
-        if (obj.hasOwnProperty(i) && (typeof obj[i] === "string")) {
+        if (obj.hasOwnProperty(i) && (typeof obj[i] === "string")) {            // string case
             count++;
+        } else if (obj.hasOwnProperty(i) && Array.isArray(obj[i])) {            // array case
+            for (var j in obj[i]) {
+                if (typeof obj[i][j] === "string") {
+                    count++;
+                }
+            }
+        } else if (obj.hasOwnProperty(i) && (typeof obj[i]) === "object") {     //object case goes recursive
+            count += strCount(obj[i]);
         }
     }
 
@@ -34,12 +42,22 @@ var obj1 = {
 };
 
 var obj2 = {
+    first: "1",
+    second: "2",
+    third: false,
+    fourth: ["anytime", 2, 3, 4],
+    fifth: null,
+    sixth: {name: "vasya", surname: "petrov"}
+};
+
+var obj3 = {
     name: "vasya",
     surname: "petrov"
 };
 
-console.log(strCount(obj1));
-console.log(strCount(obj2));
+console.log(strCount(obj1));        // should be 3
+console.log(strCount(obj2));        // should be 5
+console.log(strCount(obj3));        // should be 2
 
 
 // Задача 3.
