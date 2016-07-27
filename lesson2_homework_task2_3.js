@@ -16,21 +16,22 @@
 var strCount = function (obj) {
     var count = 0;
     for (var i in obj) {
-        if (obj.hasOwnProperty(i) && (typeof obj[i] === "string")) {            // string case
+
+        if (typeof obj[i] === "string" && obj.hasOwnProperty(i)) {
             count++;
-        } else if (obj.hasOwnProperty(i) && Array.isArray(obj[i])) {            // array case
-            for (var j in obj[i]) {
-                if (typeof obj[i][j] === "string") {
-                    count++;
-                }
-            }
-        } else if (obj.hasOwnProperty(i) && (typeof obj[i]) === "object") {     //object case goes recursive
+        }
+        else if (typeof obj[i] === "object" && obj.hasOwnProperty(i)) {
             count += strCount(obj[i]);
         }
+        else if (Array.isArray(obj[i]) && obj.hasOwnProperty(i)) {
+            for (var j in obj[i]) {
+                count += strCount(obj[i][j]);
+            }
+        }
     }
-
     return count;
 };
+
 
 
 var obj1 = {
@@ -45,7 +46,7 @@ var obj2 = {
     first: "1",
     second: "2",
     third: false,
-    fourth: ["anytime", 2, 3, 4],
+    fourth: ["anytime", 2, 3, 4, {name: "fizz", surname: "buzz"}],
     fifth: null,
     sixth: {name: "vasya", surname: "petrov"}
 };
@@ -55,6 +56,8 @@ var obj3 = {
     surname: "petrov"
 };
 
+
+console.log("task 2");
 console.log(strCount(obj1));        // should be 3
 console.log(strCount(obj2));        // should be 5
 console.log(strCount(obj3));        // should be 2
@@ -71,4 +74,5 @@ function add(a) {
     }
 }
 
+console.log("task 3");
 console.log(add(5)(3));
