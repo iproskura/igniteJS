@@ -39,17 +39,21 @@ console.log(sum(0)(1)(2)(3)(4)(5) == 15);
 //     Например:
 // ```
 
-function runString(obj, arg) {
-    //
+function runString(arg, obj) {
+    param = func["param"];
+    func = obj["func"];
+
+    return func(arg);
 }
 
-var arg = 4,                         // аргумент для функции runString
-    obj = {
-        param: 'num',                  // имя параметра для функции в свойстве func
-        func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
-    };
+var arg = 4;                         // аргумент для функции runString
 
-runString(arg, obj);              // we expect it should return 2 which is a result of square root of 4
+var obj = {
+    param: 'num',                  // имя параметра для функции в свойстве func
+    func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
+};
+
+console.log(runString(arg, obj));              // we expect it should return 2 which is a result of square root of 4
 
 
 // ### Задача 3.
