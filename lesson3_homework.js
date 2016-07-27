@@ -27,23 +27,25 @@ console.log(sum(0)(1)(2)(3)(4)(5) == 15);
 // Количество скобок может быть любым.
 
 
+//TODO lessot 3 task 2
 // ###Задача 2
 // Напишите функцию runString, которая:
 // 1)принимает 2 аргумента:
 //     * arg:  аргумент любого типа
 // * объект со свойствами:
 //     1. param: строка.
-// 2. func: строка, содержащая код функции.
+//     2. func: строка, содержащая код функции.
 //
 // 2) выполняет код функции func, переданной ей в качестве аргумента, с параметром arg.
 //     Например:
-// ```
+// ``` console.log(runString(arg, obj));              // we expect it should return 2 which is a result of square root of 4
 
 function runString(arg, obj) {
-    param = func["param"];
-    func = obj["func"];
 
-    return func(arg);
+    var f = obj["func"];
+    console.log(f);
+
+
 }
 
 var arg = 4;                         // аргумент для функции runString
@@ -53,7 +55,8 @@ var obj = {
     func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
 };
 
-console.log(runString(arg, obj));              // we expect it should return 2 which is a result of square root of 4
+console.log("task 2");
+console.log(runString(arg, obj));
 
 
 // ### Задача 3.
