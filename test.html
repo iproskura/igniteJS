@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        function runString(arg, obj) {
+            var a = obj.param;
+            var body = obj.func;
+
+            var sqrt = new Function(a, body);
+
+            return sqrt(arg);
+            // console.log(f);
+
+
+        }
+
+        var arg = 4;                         // аргумент для функции runString
+
+        var obj = {
+            param: 'num',                  // имя параметра для функции в свойстве func
+            func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
+        };
+
+        console.log("task 2");
+        console.log(runString(arg, obj));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

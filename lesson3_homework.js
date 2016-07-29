@@ -17,7 +17,6 @@ function sum(a) {
 };
 
 
-console.log(sum(1)(2));                       // 1 + 2
 console.log(sum(1)(2) == 3);                       // 1 + 2
 console.log(sum(1)(2)(3) == 6);                    // 1 + 2 + 3
 console.log(sum(5)(-1)(2) == 6);
@@ -42,8 +41,9 @@ console.log(sum(0)(1)(2)(3)(4)(5) == 15);
 
 function runString(arg, obj) {
 
-    return ret = new Function(arg, obj.func);
-    // console.log(f);
+    var sqrt = new Function(obj.param, obj.body);
+
+    return sqrt(arg);
 
 
 }
@@ -55,6 +55,8 @@ var obj = {
     func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
 };
 
+
+console.log();
 console.log("task 2");
 console.log(runString(arg, obj));
 
@@ -103,5 +105,6 @@ var ladder = {
     }
 };
 
-
+console.log();
+console.log("task3");
 ladder.up().up().down().up().down().showStep();     // 1
