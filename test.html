@@ -8,27 +8,28 @@
     <title>Document</title>
 
     <script>
-        function runString(arg, obj) {
-            var a = obj.param;
-            var body = obj.func;
-
-            var sqrt = new Function(a, body);
-
-            return sqrt(arg);
-            // console.log(f);
-
-
+        function compose() {
+            if (arguments.length == 1) {
+                return arguments[0];
+            } else {
+                for (var i = 1; i < arguments.length; i++) {
+                    return arguments[i].apply(null, arguments[0]);
+                }
+            }
         }
 
-        var arg = 4;                         // аргумент для функции runString
+        // Например:
 
-        var obj = {
-            param: 'num',                  // имя параметра для функции в свойстве func
-            func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
+        var doubleTheValue = function (val) {
+            return val * 2;
+        };
+        var addOneToTheValue = function (val) {
+            return val + 1;
         };
 
-        console.log("task 2");
-        console.log(runString(arg, obj));
+        console.log(compose(5));                          //должно вернуться значение 5
+        console.log(compose(5, doubleTheValue));                          //должно вернуться значение 10
+        console.log(compose(5, doubleTheValue, addOneToTheValue));       // должно вернуться значение  11
 
     </script>
 </head>
