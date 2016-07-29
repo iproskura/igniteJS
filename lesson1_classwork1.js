@@ -42,15 +42,12 @@ var arr = [1, 2, 31, 24, -67, 5, 3, 555, 79, -4, 21, 33, 89, -90];
 console.log(Math.min.apply(null, arr));     //min
 console.log(Math.max.apply(null, arr));     //max
 
-
 arr.sort(function (a, b) {                  // or sort
     return a - b;                           // and
 });
 
-
 console.log((arr[0]));                      // min
 console.log((arr[arr.length - 1]));         // max
-
 
 var positiveArr = arr.filter(function (number) {
     return (number > 0) & (number % 2 == 0);
