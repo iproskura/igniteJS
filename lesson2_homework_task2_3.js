@@ -46,9 +46,9 @@ var obj2 = {
     first: "1",
     second: "2",
     third: false,
-    fourth: ["anytime", 2, 3, 4, {name: "fizz", surname: "buzz"}],
+    fourth: ["anytime", 2, 3, 4, {name: "fizz", surname: "buzz"}],          // obj in arr
     fifth: null,
-    sixth: {name: "vasya", surname: "petrov"}
+    sixth: {name: "vasya", surname: "petrov", midname: ["str", "euo", 10]}  // arr in obj
 };
 
 var obj3 = {
@@ -59,7 +59,7 @@ var obj3 = {
 
 console.log("task 2");
 console.log(strCount(obj1));        // should be 3
-console.log(strCount(obj2));        // should be 5
+console.log(strCount(obj2));        // should be 9
 console.log(strCount(obj3));        // should be 2
 
 

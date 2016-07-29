@@ -17,7 +17,7 @@ console.log(find(inputArray, 0));
 //     ```var inputArray = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6]; ```
 // Отсортируйте массив inputArray, используя алгоритм пузырьковой сортировки.
 
-var inputArray = [9, 2, 1, 3, 0, 8, 7, 6, 5, 4, 10];
+var inputArr = [9, 2, 1, 3, 0, 8, 7, 6, 5, 4, 10];
 
 function bubbleSort(arr) {
     var i, j;
@@ -33,7 +33,7 @@ function bubbleSort(arr) {
     return arr;
 }
 
-console.log(bubbleSort(inputArray));
+console.log(bubbleSort(inputArr));
 
 // ###Задача 3.
 // Напишите функцию bigToSmall, которая будет принимать один аргумент inputArray (двухмерный массив).

@@ -6,11 +6,14 @@
 // ```
 //     Какие преобразования происходят при вычислении?
 
+// ОТВЕТ:
+
 // массив - объект, два массива - два разных объекта.
 
 // 1: логическое отрицаниек ко второму массиву ![]  => false  ;
 // 2: приведение объекта слева к примитиву. [].toString => '';
 // 3: ('' == false) численное преобразование => (0 == 0) - истина
+
 
 
 // ###Задача 2
@@ -22,8 +25,8 @@
 function Calculator() {
 
     this.read = function () {
-        this.a = +prompt('a?', 0);
-        this.b = +prompt('b?', 0);
+        this.a = +prompt('a?', "0");
+        this.b = +prompt('b?', "0");
 
     };
     this.sum = function () {
@@ -57,8 +60,8 @@ function Summator() {
     };
 
     this.run = function () {
-        this.a = +prompt("a?", 0);
-        this.b = +prompt("b?", 0);
+        this.a = +prompt("a?", "0");
+        this.b = +prompt("b?", "0");
 
         console.log(this.sum(this.a, this.b));
     }

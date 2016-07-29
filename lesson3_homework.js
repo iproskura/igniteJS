@@ -27,7 +27,7 @@ console.log(sum(0)(1)(2)(3)(4)(5) == 15);
 // Количество скобок может быть любым.
 
 
-//TODO lessot 3 task 2
+//TODO lesson 3 task 2
 // ###Задача 2
 // Напишите функцию runString, которая:
 // 1)принимает 2 аргумента:
@@ -42,8 +42,8 @@ console.log(sum(0)(1)(2)(3)(4)(5) == 15);
 
 function runString(arg, obj) {
 
-    var f = obj["func"];
-    console.log(f);
+    return ret = new Function(arg, obj.func);
+    // console.log(f);
 
 
 }

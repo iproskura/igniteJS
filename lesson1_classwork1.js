@@ -20,7 +20,7 @@ delete  user.name;
 
 var isEmpty = function (obj) {
     return JSON.stringify(obj) === '{}';    // or  return Object.keys(obj).length === 0;
-}
+};
 
 var obj1 = {};
 var obj2 = {name: "vasya"};
@@ -46,9 +46,10 @@ console.log(Math.max.apply(null, arr));     //max
 arr.sort(function (a, b) {                  // or sort
     return a - b;                           // and
 });
-// min
-console.log((arr[0]));                      // max
-console.log((arr[arr.length - 1]));
+
+
+console.log((arr[0]));                      // min
+console.log((arr[arr.length - 1]));         // max
 
 
 var positiveArr = arr.filter(function (number) {
