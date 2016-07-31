@@ -5,6 +5,25 @@
 // в течение которых каждые 100мс в консоли появляется очередное число.
 
 
+function myTimer() {
+    var counter = 1;
+    return setInterval(function () {
+
+        console.log(counter);
+        if (counter >= 20) {
+            clearInterval(this);
+            console.log("timer is over");
+        }
+        counter++;
+
+    }, 100);
+}
+
+console.log("task1");
+
+myTimer();
+
+
 //  ###Задача 2
 //
 // Превратите объект leader из примера ниже в JSON:

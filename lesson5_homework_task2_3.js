@@ -23,7 +23,7 @@ function smartSum() {
 };
 
 console.log("task2");
-console.log("" + smartSum(3));                            // 3; explicit concat = .toString();
+console.log("" + smartSum(3));                            // 3; concat => explicit .toString();
 console.log("" + smartSum(1, 2));                         // 3; equal alert(smartSum(1,2);
 console.log("" + smartSum(1, 3)(2));                      // 6;
 console.log("" + smartSum(1, 2)(3, 4, 5)(6)(7, 10));      // 38;

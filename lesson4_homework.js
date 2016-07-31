@@ -1,20 +1,25 @@
-// TODO ###Задача 1
+//###Задача 1
 //
 // Представьте, что в JavaScript нет метода call, есть только метод apply. Используя apply, напишите метод call.
-// defining some func
-function myFunc() {
-    console.log(this);
-}
-
-
-function myCall() {     // this, arg1, arg 2
-    return arguments[0].apply(this, [].slice())
-};
-
-
 // func.call(context, arg1, arg2);
 // func.apply(context, [arg1, arg2]);
 
+// defining some func
+var obj = {name: "aoeu"}
+
+function myFunc() {
+    console.log(this.name);
+};
+
+function myCall() {                                 // this, arg1, arg 2
+    this.apply([].shift.apply(arguments, arguments));
+};
+
+
+Function.prototype.call = myCall;
+
+console.log("task 1");
+myFunc.call(obj);
 
 // ###Задача 2
 //
