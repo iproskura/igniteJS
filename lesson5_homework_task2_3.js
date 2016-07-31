@@ -1,19 +1,32 @@
-// TODO ###Задача 2
+// ###Задача 2
 //
 // Напишите функцию smartSum, которая:
 // * Принимает произвольное количество аргументов;
 // * Возвращает сумму всех переданных ей аргументов;
 // * Принимает за 0 любой аргумент, который не может быть преобразован в числовой тип (т.е при попытке его парсить возвращается NaN);
 // * Может быть вызвана неограниченное количество раз;
-// function smartSum() {
-//     //
-// }
-//
-//
-// smartSum(3);                            // 3;
-// smartSum(1, 2);                         // 3;
-// smartSum(1, 3)(2);                      // 6;
-// smartSum(1, 2)(3, 4, 5)(6)(7, 10);      // 38;
+function smartSum() {
+    var res = 0;
+    var forEach = [].forEach;
+    forEach.call(arguments, function (f) {
+        res += f;
+    });
+    return (function Sum() {
+        forEach.call(arguments, function (f) {
+            res += f;
+        });
+        Sum.toString = function () {
+            return res;
+        };
+        return Sum;
+    })();
+};
+
+console.log("task2");
+console.log("" + smartSum(3));                            // 3; explicit concat = .toString();
+console.log("" + smartSum(1, 2));                         // 3; equal alert(smartSum(1,2);
+console.log("" + smartSum(1, 3)(2));                      // 6;
+console.log("" + smartSum(1, 2)(3, 4, 5)(6)(7, 10));      // 38;
 
 
 // ### Задача 3
