@@ -18,8 +18,8 @@
                 var input = prompt("input math expression", "0/0");
                 try {
                     var expr = eval(input);
-                    if (isNaN(expr)) {
-                        throw new Error("isNaN");
+                    if (isNaN(expr || expr == null)) {
+                        throw new Error("isNaN or null");
                     }
                     alert(expr);
                 }
