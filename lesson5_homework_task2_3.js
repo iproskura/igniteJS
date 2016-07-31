@@ -43,9 +43,9 @@ function myTimer(arg) {
 
         console.log(counter);
         if (counter == 0) {
-            clearInterval(this)
+            clearInterval(this);
+            console.log("timer is over");
         }
-        ;
         counter--;
 
     }, 100);
