@@ -21,11 +21,15 @@ function myCall() {
 // func2 ( func1 ( arg ));
 
 function compose() {
+    var res = arguments[0];
+
     if (arguments.length == 1) {
-        return arguments[0];
+        return res;
     } else {
-
-
+        for (var i = 1; i < arguments.length; i++) {
+            res = arguments[i](res);
+        }
+        return res;
     }
 }
 
@@ -37,14 +41,17 @@ var addOneToTheValue = function (val) {
     return val + 1;
 };
 
-// console.log(compose(5));                          //должно вернуться значение 5
-// console.log(compose(5, doubleTheValue));                          //должно вернуться значение 10
-// console.log(compose(5, doubleTheValue, addOneToTheValue));       // должно вернуться значение  11
+
+console.log("task 2");                          //должно вернуться значение 5
+console.log(compose(5));                          //должно вернуться значение 5
+console.log(compose(5, doubleTheValue));                          //должно вернуться значение 10
+console.log(compose(5, doubleTheValue, addOneToTheValue));       // должно вернуться значение  11
 
 // Если функции передан только один параметр, она должна вернуть его значение.
 
 
-// TODO ### Задача 3
+//-----------------------------------------------------------------------------
+// ### Задача 3
 //
 // Создайте декоратор makeLogging(f, log), который принимает в качестве аргумента функцию f и массив log.
 //     Он должен возвращать обёртку вокруг f, которая при каждом вызове записывает («логирует») аргументы в log,
@@ -70,6 +77,8 @@ work = makeLogging(work, log);
 work(1); // 1, добавлено в log
 work(5); // 5, добавлено в log
 
+
+console.log("task 3");
 for (var i = 0; i < log.length; i++) {
     console.log('Лог:' + log[i]); // "Лог:1", затем "Лог:5"
 }
