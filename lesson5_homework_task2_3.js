@@ -5,21 +5,46 @@
 // * Возвращает сумму всех переданных ей аргументов;
 // * Принимает за 0 любой аргумент, который не может быть преобразован в числовой тип (т.е при попытке его парсить возвращается NaN);
 // * Может быть вызвана неограниченное количество раз;
-function smartSum() {
+// function smartSum() {
+//     //
+// }
+//
+//
+// smartSum(3);                            // 3;
+// smartSum(1, 2);                         // 3;
+// smartSum(1, 3)(2);                      // 6;
+// smartSum(1, 2)(3, 4, 5)(6)(7, 10);      // 38;
 
-}
 
-
-smartSum(3);                            // 3;
-smartSum(1, 2);                         // 3;
-smartSum(1, 3)(2);                      // 6;
-smartSum(1, 2)(3, 4, 5)(6)(7, 10);      // 38;
-
-
-
-// TODO ### Задача 3
+// ### Задача 3
 //
 // Сделайте таймер обратного отсчета, который выполняет обратный отсчет от зданого числа до нуля.
 //     Когда доходит до нуля - выводит сообщение о том, что отсчет закончен.
 //
 //     Например, var timer=10, каждую секунду на странице меняется числа - 10, 9, 8... и так далее до нуля.
+
+function myTimer(arg) {
+    var counter = arg;
+
+    return setInterval(function () {
+
+        console.log(counter);
+        if (counter == 0) {
+            clearInterval(this)
+        }
+        ;
+        counter--;
+
+    }, 100);
+}
+
+console.log("task3, timer(5)");
+
+var countdown = 5;
+
+myTimer(countdown);
+
+setTimeout(function () {
+    console.log("task3, timer(10)");
+    myTimer(countdown * 2);
+}, countdown * 100 + 300);
