@@ -3,7 +3,6 @@
 // Представьте, что в JavaScript нет метода call, есть только метод apply. Используя apply, напишите метод call.
 
 function myCall() {
-    arguments.splice = [].splice();
 
 
 };
@@ -20,17 +19,15 @@ function myCall() {
 // переданных ей в качестве дополнительных аргументов.
 
 // func2 ( func1 ( arg ));
-//
-// function compose() {
-//
-//     if (arguments.length == 1){
-//         return arguments[0];
-//     }else {
-//
-//
-//
-//     }
-// }
+
+function compose() {
+    if (arguments.length == 1) {
+        return arguments[0];
+    } else {
+
+
+    }
+}
 
 // Например:
 var doubleTheValue = function (val) {
@@ -60,9 +57,11 @@ function work(a) {
 }
 
 function makeLogging(f, log) {
-
+    return function (a) {
+        log.push(a);
+        return f.call(this, a);
+    }
 }
-
 
 //     Работать должно так:
 var log = [];

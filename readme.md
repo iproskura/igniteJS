@@ -16,13 +16,9 @@ lesson 2:   classwork:  done
 lesson 3:   classwork:  done
             homework:   done
 
-lesson 4:   classwork:  ---
-            homework:   ---
+lesson 4:   classwork:  done
+            homework:   --+
 
 lesson 5:   classwork:  -+-
             homework:   ---
-
-
-
-
 ```

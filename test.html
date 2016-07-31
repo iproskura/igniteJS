@@ -8,32 +8,28 @@
     <title>Document</title>
 
     <script>
-        function compose() {
-            if (arguments.length == 1) {
-                return arguments[0];
-            } else {
-                for (var i = 1; i < arguments.length; i++) {
-                    return arguments[i].apply(null, arguments[0]);
-                }
+        //
+        var obj = {
+            x: 8,
+            valueOf: function () {
+                return this.x + 2;
+            },
+            toString: function () {
+                return this.x.toString();
             }
-        }
-
-        // Например:
-
-        var doubleTheValue = function (val) {
-            return val * 2;
-        };
-        var addOneToTheValue = function (val) {
-            return val + 1;
         };
 
-        console.log(compose(5));                          //должно вернуться значение 5
-        console.log(compose(5, doubleTheValue));                          //должно вернуться значение 10
-        console.log(compose(5, doubleTheValue, addOneToTheValue));       // должно вернуться значение  11
+
+        alert(obj);
+
 
     </script>
+    <style>
+
+    </style>
 </head>
 <body>
+
 
 </body>
 </html>
