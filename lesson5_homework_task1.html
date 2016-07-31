@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        //// Напишите программу, которая принимает математическое выражение (используйте prompt) и результат его получает через eval.
+        //     При ошибке нужно выводить сообщение и просить изменить некорректный ввод.
+        //     Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение, возвращающее NaN, например 0/0.
+
+        function evilCalc() {
+            function loop() {                           //no return,  output through alert()
+
+                var input = prompt("input math expression", "0/0");
+                try {
+                    var expr = eval(input);
+                    if (isNaN(expr)) {
+                        throw new Error("isNaN");
+                    }
+                    alert(expr);
+                }
+
+                catch (e) {
+                    alert("error, please input correct expression " + e.message);
+                    loop();
+                }
+            }
+
+            loop();
+        }
+        ;
+
+        console.log("task 1");
+        evilCalc();
+
+
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -17,7 +17,7 @@ lesson 3:   classwork:  done
             homework:   done
 
 lesson 4:   classwork:  done
-            homework:   --+
+            homework:   -++
 
 lesson 5:   classwork:  -+-
             homework:   ---

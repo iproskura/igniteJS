@@ -1,17 +1,22 @@
 // TODO ###Задача 1
 //
 // Представьте, что в JavaScript нет метода call, есть только метод apply. Используя apply, напишите метод call.
+// defining some func
+function myFunc() {
+    console.log(this);
+}
 
-function myCall() {
 
-
+function myCall() {     // this, arg1, arg 2
+    return arguments[0].apply(this, [].slice())
 };
 
-// showFullName.call(user, 'firstName', 'surname');
-// showFullName.apply(user, ['firstName', 'surname']);
+
+// func.call(context, arg1, arg2);
+// func.apply(context, [arg1, arg2]);
 
 
-// TODO ###Задача 2
+// ###Задача 2
 //
 // Напишите функцию compose, которая принимает значение в качестве основного параметра и
 // произвольное количество функций в качестве дополнительных параметров.
