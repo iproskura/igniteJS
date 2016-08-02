@@ -1,10 +1,6 @@
 # igniteJS
 ignite js course homework and classwork solutions by Igor Proskura
 
-### notation
-all *.js output through  ```console.log()``` not ```alert()```
-
-
 ####checklist:
 ```
 lesson 1:   classwork:  done
@@ -21,4 +17,17 @@ lesson 4:   classwork:  done
 
 lesson 5:   classwork:  done
             homework:   done
+```
+```
+lesson 6:   classwork:  ---
+            homework:   --+
+lesson 7:   classwork:  -
+            homework:   ---
+lesson 8:   classwork:  ---
+            homework:   ---
+lesson 9:   classwork:  ---
+            homework:   ---
+lesson 10   classwork:  ---
+            homework:   ---
+
 ```
