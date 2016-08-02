@@ -19,7 +19,7 @@ lesson 5:   classwork:  done
             homework:   done
 ```
 ```
-lesson 6:   classwork:  +-+
+lesson 6:   classwork:  done
             homework:   --+
 lesson 7:   classwork:  -
             homework:   ---

@@ -6,26 +6,18 @@
 </head>
 <body>
 
-</body>
-</html>
-
-
-###Задача 2.
-
-Код для  задачи:
-
-```
-<body>
-
 <div id="widget" data-widget-name="menu">Выберите жанр</div>
 
 <script>
-    /* ... */
+    var myDiv = document.getElementById("widget");
+    var dwn = myDiv.getAttribute("data-widget-name");
+    alert(dwn);
 </script>
 </body>
+</html>
 
-```
-Задание:
+<!--###Задача 2.-->
+<!--Задание:-->
 
-* Напишите код, который получит объект для тега div и запишите его в переменную.
-* Запишите значение атрибута "data-widget-name" в переменную.
+<!--* Напишите код, который получит объект для тега div и запишите его в переменную.-->
+<!--* Запишите значение атрибута "data-widget-name" в переменную.-->
