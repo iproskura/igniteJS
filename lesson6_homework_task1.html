@@ -2,26 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
 
-</body>
-</html>
-
-###Задача 1
-
-Есть дерево из тегов ul и li.
-
-Напишите код, который для каждого элемента li выведет:
-* Текст непосредственно в нём указанный (без подразделов).
-* Количество всех вложенных в него элементов li.
-
-Код списка для задачи:
-```
 <ul>
     <li>Животные
         <ul>
@@ -59,5 +43,29 @@
         </ul>
     </li>
 </ul>
-```
+<hr>
+
+<div id="output"></div>
+</body>
+<script>
+    var output = document.getElementById("output");
+
+    var llist = document.getElementsByTagName("li");
+
+    for(var i = 0; i < llist.length; i++){
+        output.innerHTML += llist[i].textContent + "</br>";
+        output.innerHTML += llist[i].childNodes.length + "</br>";
+    }
+
+</script>
+
+</html>
+
+<!--###Задача 1-->
+
+<!--Есть дерево из тегов ul и li.-->
+
+<!--Напишите код, который для каждого элемента li выведет:-->
+<!--* Текст непосредственно в нём указанный (без подразделов).-->
+<!--* Количество всех вложенных в него элементов li.-->
 
