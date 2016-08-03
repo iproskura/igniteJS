@@ -48,7 +48,7 @@ function myTimer(arg) {
         }
         counter--;
 
-    }, 100);
+    }, 1000);
 }
 
 console.log("task3, timer(5)");
@@ -58,6 +58,5 @@ var countdown = 5;
 myTimer(countdown);
 
 setTimeout(function () {
-    console.log("task3, timer(10)");
     myTimer(countdown * 2);
-}, countdown * 100 + 300);
+}, countdown * 1000 + 300);
