@@ -16,13 +16,13 @@ lesson 4:   classwork:  +++
             homework:   +++
 
 lesson 5:   classwork:  +++
-            homework:   +++            
+            homework:   +++
 ```
 ```
 lesson 6:   classwork:  +++
             homework:   +++
 lesson 7:   classwork:  -
-            homework:   +-+
+            homework:   +++
 lesson 8:   classwork:  ---
             homework:   ---
 lesson 9:   classwork:  ---
