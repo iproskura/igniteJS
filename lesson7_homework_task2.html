@@ -5,8 +5,12 @@
     <title>Title</title>
 
     <style>
+        span {
+            color: coral;
+        }
+
         .note {
-            position: fixed;
+            position: absolute;
             z-index: 1000;
             border: 1px dotted sandybrown;
             text-align: left;
@@ -29,13 +33,12 @@
 
 </head>
 <body>
-
 <p>
     The bare teleporter oddly deceives the green people. The star is more parasite now than captain. colorful and
     pedantically quirky. Machines walk on paralysis at nowhere!
 </p>
 
-<blockquote id="myAnchor" cite="http://developer.mozilla.org">
+<blockquote id="myAnchor">
     <p>Everything we do is connected with beauty: definition, paradox, tantra, density..</p>
     <footer><cite> Dummy text generator</cite></footer>
 </blockquote>
@@ -44,8 +47,6 @@
     Blend each side of the zucchini with three oz of steak. Chocolate tastes best with oyster sauce and lots of celery.
     Springy, sour pudding is best mashed up with slobbery olive oil.
 </p>
-
-
 <script>
     //    Создайте функцию positionAt(anchor, position, elem), которая позиционирует элемент elem,
     //    в зависимости от значения аргумента position: сверху ("top"), справа ("right") или снизу ("bottom").
@@ -60,17 +61,17 @@
         switch (position) {
             case "top":
                 elem.style.left = anch.left + "px";
-                elem.style.top = anch.top - elem.offsetWidth + "px";
+                elem.style.top = anch.top - elem.offsetHeight + "px";
                 break;
 
             case "right":
-                elem.style.left = anch.left + anch.offsetWidth + "px";
+                elem.style.left = anch.right + "px";
                 elem.style.top = anch.top + "px";
                 break;
 
             case "bottom":
                 elem.style.left = anch.left + "px";
-                elem.style.top = anch.top + anch.offsetHeight + "px";
+                elem.style.top = anch.bottom + "px";
                 break;
         }
     }
@@ -88,10 +89,9 @@
 
     var quote = document.getElementById("myAnchor");
 
-    showNote(quote, "top", "top: Est altus fraticinida, cesaris.");
-    showNote(quote, "left", "left: Triticum, fluctus, et quadra.");
-    showNote(quote, "bottom", "bottom: A falsis, fides neuter calceus.");
-
+    showNote(quote, "top", "<strong>top: Est altus fraticinida, cesaris.</strong>");
+    showNote(quote, "right", "<em>right: Triticum, fluctus, et quadra.</em>");
+    showNote(quote, "bottom", "bottom: A falsis, fides <span>neuter</span> calceus.");
 
 </script>
 </body>
