@@ -39,11 +39,11 @@ console.log("" + smartSum(1, 2)(3, 4, 5)(6)(7, 10));      // 38;
 function myTimer(arg) {
     var counter = arg;
 
-    return setInterval(function () {
+    var myCounter = setInterval(function () {
 
         console.log(counter);
         if (counter == 0) {
-            clearInterval(this);
+            clearInterval(myCounter);
             console.log("timer is over");
         }
         counter--;
