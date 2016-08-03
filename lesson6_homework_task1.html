@@ -50,13 +50,11 @@
 <script>
     var output = document.getElementById("output");
 
-    var llist = document.getElementsByTagName("li");
+    var liList = document.getElementsByTagName("li");
 
-    for (var i = 0; i < llist.length; i++) {
-        output.innerHTML += llist[i].textContent.split(' ')[0] + " ";
-
-//        var numOfChildren = llist[0].getElementsByTagName("li").length;   //
-//        output.innerHTML += numOfChildren + "</br>";                      //TODO length
+    for (var i = 0; i < liList.length; i++) {
+        output.innerHTML += liList[i].textContent.split(' ')[0] + " ";
+        output.innerHTML += liList[i].getElementsByTagName("li").length + "</br>";
     }
 
 </script>
