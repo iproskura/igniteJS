@@ -3,24 +3,24 @@ ignite js course homework and classwork solutions by Igor Proskura
 
 ####checklist:
 ```
-lesson 1:   classwork:  done
-            homework:   done
+lesson 1:   classwork:  +++
+            homework:   +++
 
-lesson 2:   classwork:  done
-            homework:   done
+lesson 2:   classwork:  +++
+            homework:   +++
 
-lesson 3:   classwork:  done
-            homework:   done
+lesson 3:   classwork:  +++
+            homework:   +++
 
-lesson 4:   classwork:  done
-            homework:   done
+lesson 4:   classwork:  +++
+            homework:   +++
 
-lesson 5:   classwork:  done
-            homework:   done
+lesson 5:   classwork:  +++
+            homework:   +++            
 ```
 ```
-lesson 6:   classwork:  done
-            homework:   done
+lesson 6:   classwork:  +++
+            homework:   +++
 lesson 7:   classwork:  -
             homework:   +-+
 lesson 8:   classwork:  ---

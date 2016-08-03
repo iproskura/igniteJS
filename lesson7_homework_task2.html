@@ -3,18 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        .note {
+            position: fixed;
+            z-index: 1000;
+            border: 1px dotted sandybrown;
+            text-align: left;
+        }
+
+        blockquote {
+            margin-left: 75px;
+            display: inline-block;
+            background: #ecf8e7;
+            padding: 10px;
+            border-left: 15px solid #eee;
+            border-bottom-right-radius: 35%;
+        }
+
+        footer > cite {
+            font-style: italic;
+            font-size: 80%;
+        }
+    </style>
+
 </head>
 <body>
 
+<p>
+    The bare teleporter oddly deceives the green people. The star is more parasite now than captain. colorful and
+    pedantically quirky. Machines walk on paralysis at nowhere!
+</p>
+
+<blockquote id="myAnchor" cite="http://developer.mozilla.org">
+    <p>Everything we do is connected with beauty: definition, paradox, tantra, density..</p>
+    <footer><cite> Dummy text generator</cite></footer>
+</blockquote>
+
+<p>
+    Blend each side of the zucchini with three oz of steak. Chocolate tastes best with oyster sauce and lots of celery.
+    Springy, sour pudding is best mashed up with slobbery olive oil.
+</p>
+
+
+<script>
+    //    Создайте функцию positionAt(anchor, position, elem), которая позиционирует элемент elem,
+    //    в зависимости от значения аргумента position: сверху ("top"), справа ("right") или снизу ("bottom").
+    //    Функция должна проводить позиционирование относительно элемента anchor.
+    //
+    //    Используйте её, чтобы сделать функцию showNote(anchor, position, html),
+    //    которая показывает элемент с классом class="note" и текстом html на позиции position рядом с элементом anchor.
+
+    function positionAt(anchor, position, elem) {
+        var anch = anchor.getBoundingClientRect();
+
+        switch (position) {
+            case "top":
+                elem.style.left = anch.left + "px";
+                elem.style.top = anch.top - elem.offsetWidth + "px";
+                break;
+
+            case "right":
+                elem.style.left = anch.left + anch.offsetWidth + "px";
+                elem.style.top = anch.top + "px";
+                break;
+
+            case "bottom":
+                elem.style.left = anch.left + "px";
+                elem.style.top = anch.top + anch.offsetHeight + "px";
+                break;
+        }
+    }
+
+    function showNote(anchor, position, html) {
+
+        var note = document.createElement("div");
+        note.className = "note";
+        note.innerHTML = html;
+
+        document.body.appendChild(note);
+
+        positionAt(anchor, position, note);
+    }
+
+    var quote = document.getElementById("myAnchor");
+
+    showNote(quote, "top", "top: Est altus fraticinida, cesaris.");
+    showNote(quote, "left", "left: Triticum, fluctus, et quadra.");
+    showNote(quote, "bottom", "bottom: A falsis, fides neuter calceus.");
+
+
+</script>
 </body>
+
+
 </html>
-
-
-<!--###Задача 2.-->
-
-<!--Создайте функцию positionAt(anchor, position, elem), которая позиционирует элемент elem,
-в зависимости от значения аргумента position: сверху ("top"), справа ("right") или снизу ("bottom").-->
-<!--Функция должна проводить позиционирование относительно элемента anchor.-->
-
-<!--Используйте её, чтобы сделать функцию showNote(anchor, position, html),
-которая показывает элемент с классом class="note" и текстом html на позиции position рядом с элементом anchor.-->
