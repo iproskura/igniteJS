@@ -3,20 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
+    <style>
+        div {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            border: 1px;
+            border-radius: 40%;
+        }
+
+        #div1 {
+            background-color: red;
+            left: 10px;
+            top: 20px;
+        }
+
+        #div2 {
+            background-color: blue;
+            left: 30px;
+            top: 40px;
+        }
+
+        #div3 {
+            background-color: limegreen;
+            left: 50px;
+            top: 60px;
+        }
+    </style>
+
 </head>
 <body>
 
-</body>
-</html>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
 
-#Homework
-
-<!--###Задача 1.-->
 
 <!--Создайте страницу с 3 элементами div. Напишите сценарий, который будет произвольно менять положение этих элементов на странице каждую секунду.-->
+<script>
+    function moveDivs() {
+        document.body.style.overflow = "hidden";                            //no more scroll !!!
+
+        var cHeight = document.documentElement.clientHeight;
+        var cWidth = document.documentElement.clientWidth;
+
+        var div1 = document.getElementById("div1");
+        var div2 = document.getElementById("div2");
+        var div3 = document.getElementById("div3");
 
 
+        function mover(target) {
 
+            // "+1" because of Math.floor  ' - target.client... ' - to stay in document boundaries
+            target.style.left = Math.floor(Math.random() * (cWidth - target.clientWidth + 1)) + "px";
+            target.style.top = Math.floor(Math.random() * (cHeight - target.clientHeight + 1)) + "px";
+        }
 
+        setInterval(function () {
+            mover(div1);
+            mover(div2);
+            mover(div3);
+        }, 1000)
+    }
+    window.onload = moveDivs;
 
+</script>
 
+</body>
+</html>

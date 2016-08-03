@@ -22,7 +22,7 @@ lesson 5:   classwork:  done
 lesson 6:   classwork:  done
             homework:   done
 lesson 7:   classwork:  -
-            homework:   --+
+            homework:   +-+
 lesson 8:   classwork:  ---
             homework:   ---
 lesson 9:   classwork:  ---
