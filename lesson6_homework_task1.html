@@ -52,8 +52,8 @@
 
     var llist = document.getElementsByTagName("li");
 
-    for(var i = 0; i < llist.length; i++){
-        output.innerHTML += llist[i].textContent + "</br>";
+    for (var i = 0; i < llist.length; i++) {
+        output.innerHTML += llist[i].nodeValue + "</br>";       // TODO
         output.innerHTML += llist[i].childNodes.length + "</br>";
     }
 
