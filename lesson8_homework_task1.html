@@ -3,8 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        input {
+            display: block;
+            margin: 2px;
+        }
+
+    </style>
 </head>
 <body>
+<form>
+    Login: <input type="text" name="flogin" value="aoeu2">
+    password: <input type="password" name="fpassword" value="$">
+    phone: <input type="tel" name="fphone" >
+    <input type="submit" id="myButton">
+</form>
+
+<script>
+    function loadHandler() {
+
+        //TODO bug! flogin border red just for a moment
+        var form = document.getElementsByTagName("form")[0];
+        var button = form.querySelector("#myButton");
+
+        var loginPattern = /\d/;
+        var passwordPattern = /\$/;
+        var phonePattern = /\d/gi;
+
+
+        function submitHandler() {
+            if (form.flogin.value.match(loginPattern)) {
+                form.flogin.style.borderColor = "red";
+            }
+            ;
+            if (form.fpassword.value.match(passwordPattern)) {
+                form.fpassword.style.borderColor = "red";
+            }
+            ;
+            if (!form.fphone.value.match(phonePattern)) {
+                form.fphone.style.borderColor = "red";
+            }
+
+        }
+
+        form.addEventListener("submit", submitHandler);
+    }
+    window.addEventListener("load", loadHandler);
+</script>
 
 </body>
 </html>

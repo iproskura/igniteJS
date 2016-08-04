@@ -3,16 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #tip {
+            display: none;
+            position: fixed;
+            background-color: cornsilk;
+            border: 1px double coral;
+            border-radius: 2px;
+            width: auto;
+        }
+
+    </style>
 </head>
 <body>
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
 
+<div id="tip"></div>
+<script>
+    function loadHandler() {
+
+        function mouseOverHandler(e) {
+            var tip = document.getElementById("tip");
+            tip.style.display = "block";
+            tip.innerHTML = e.target.dataset.tooltip;
+
+            tip.style.left = e.clientX + 10 + "px";
+            tip.style.top = e.clientY - 10 + "px";
+
+        }
+
+        function mouseOutHandler() {
+            var tip = document.getElementById("tip");
+            tip.style.display = "none";
+
+        }
+
+        var childs = document.body.childNodes;
+        var childElems = [];
+
+        for (var i = 0; i < childs.length; i++) {
+            if (childs[i].nodeType == 1 && childs[i].hasAttribute("data-tooltip")) {
+                childElems.push(childs[i]);
+            }
+        }
+
+        for (var j = 0; j < childElems.length; j++) {
+            childElems[j].addEventListener("mouseover", mouseOverHandler);
+            childElems[j].addEventListener("mouseout", mouseOutHandler)
+        }
+    }
+
+    window.addEventListener("load", loadHandler)
+</script>
 </body>
 </html>
 
 <!--При наведении мыши на элемент, на нём возникает событие mouseover, при удалении мыши с элемента – событие mouseout.-->
-<!--Зная это, напишите JS-код, который будет делать так, что при наведении на элемент, если у него есть атрибут data-tooltip – над ним будет показываться подсказка с содержимым этого атрибута.-->
-<!--Например, две кнопки:-->
-<!--```-->
-<!--<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>-->
-<!--<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>-->
-<!--```-->
+<!--Зная это, напишите JS-код, который будет делать так, что при наведении на элемент, если у него есть
+.атрибут data-tooltip – над ним будет показываться подсказка с содержимым этого атрибута.-->
