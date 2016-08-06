@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        div {
+            background-color: red;
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            z-index:100;
+            width: 50px;
+            height: 50px;;;
+        }
+    </style>
 </head>
-<body>
+<body>>
+    setX<input id="x" type="text" value="200">
+    setY<input id="y" type="text" value="300">
+    <button id="button">Button</button>
+<div id="mydiv"></div>
 
+<script>
+    window.onload = function () {
+        var btn = document.getElementById("button");
+        var inpX = document.getElementById("x");
+        var inpY = document.getElementById("y");
+        var mydiv = document.getElementById("mydiv");
+
+         function submitHandler(e) {
+            if (inpX.value == "" || inpY.value == "") {
+                e.stopPropagation();
+
+                alert("please input coords");
+            } else {
+                mydiv.style.left = inpX.value + "px";
+                mydiv.style.top = inpY.value + "px";
+            }
+        }
+        btn.addEventListener("click", submitHandler)
+
+    }
+</script>
 </body>
 </html>
 <!--Создайте страницу с двумя полями ввода, кнопкой и элементом div с шириной и высотой 50px.-->
