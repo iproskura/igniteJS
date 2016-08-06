@@ -24,9 +24,9 @@ lesson 6:   classwork:  +++
 lesson 7:   classwork:  -
             homework:   +++
 lesson 8:   classwork:  +-
-            homework:   ++-
+            homework:   +++
 lesson 9:   classwork:  -
-            homework:   ---
+            homework:   -*+
 lesson 10   classwork:  --
             homework:   ---
 

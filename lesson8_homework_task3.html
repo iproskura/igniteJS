@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script>
+        function pluser() {
+            output.value = (+arg1.value) + (+arg2.value);
+        }
+        function minuser() {
+            output.value = (+arg1.value) - (+arg2.value);
+        }
+        function multiplier() {
+            output.value = (+arg1.value) * (+arg2.value);
+        }
+        function divisioner() {
+            output.value = (+arg1.value) / (+arg2.value);
+        }
+
+        window.onload = function () {
+
+            var arg1 = document.getElementById("arg1");
+            var arg2 = document.getElementById("arg2");
+            var output = document.getElementById("output");
+
+            var btnPlus = document.getElementById("plus");
+            var btnMinus = document.getElementById("minus");
+            var btnMul = document.getElementById("mul");
+            var btnDiv = document.getElementById("divi");
+
+            //DOM level 2
+//            btnPlus.addEventListener("click", pluser);
+//            btnMinus.addEventListener("click", minuser);
+//            btnMul.addEventListener("click", multiplier);
+//            btnDiv.addEventListener("click", divisioner);
+        }
+    </script>
+
 </head>
 <body>
+<div>
+    arg1 <input type="number" id="arg1" value="4">
 
+    <!-- DOM level 1 -->
+    <button id="plus" onclick="pluser()">+</button>
+    <button id="minus" onclick="minuser()">-</button>
+    <button id="mul" onclick="multiplier()">*</button>
+    <button id="divi" onclick="divisioner()">/</button>
+
+    <!-- DOM level 2 -->
+    <!--<button id="plus">+</button>-->
+    <!--<button id="minus">-</button>-->
+    <!--<button id="mul">*</button>-->
+    <!--<button id="divi">/</button>-->
+
+    arg2 <input type="number" id="arg2" value="2">
+    = <input type="number" id="output" disabled>
+</div>
 </body>
 </html>
 
