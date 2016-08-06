@@ -3,8 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
+<ul id="wrapper">
+    <li>Est clemens solitudo, cesaris.</li>
+    <li>Competition de festus habena, quaestio omnia!</li>
+    <li>Pol, brevis adelphis!</li>
+    <li>Experimentum foris ducunt ad neuter solem.</li>
+    <li>Pol, habena!</li>
+</ul>
+
+
+<script>
+    window.addEventListener ("load", function () {
+
+        var wrapper = document.getElementById("wrapper");
+
+        function ulClickHandler(e) {
+            e.target.style.backgroundColor = "yellow";
+        }
+
+        wrapper.addEventListener("click", ulClickHandler);
+    })
+</script>
 
 </body>
 </html>
