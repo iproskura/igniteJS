@@ -3,8 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        div {
+            border-radius: 50%;
+        }
+
+        #wrapper {
+            position: absolute;
+            height: 150px;
+            width: 150px;
+            background-color: #eee;
+        }
+
+        #runner {
+            position: relative;
+            left: 25px;
+            top: 5px;
+            text-align: center;
+            background-color: crimson;
+            height: 100px;
+            width: 100px;
+        }
+
+        p {
+            /*text-align: match-parent;*/
+        }
+    </style>
+
 </head>
 <body>
+
+<div id="wrapper">
+    <div id="runner">
+        <p>Скидка 75% !</p>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", function () {                   //TODO soooo bugged :(
+        document.body.style.overflow = "hidden";                  //no more scroll
+
+        var cHeight = document.documentElement.clientHeight;      //document dimensions
+        var cWidth = document.documentElement.clientWidth;
+
+        var wrapper = document.getElementById("wrapper");
+
+        function wrapperOnmouseOverHandler(e) {
+            var wrapperAbsCenterX = Math.floor(wrapper.getBoundingClientRect().left + wrapper.clientWidth / 2);   //absolute page
+            var wrapperAbsCenterY = Math.floor(wrapper.getBoundingClientRect().top + wrapper.clientHeight / 2);  //position of the center
+
+            var wrapperRelCenterX = wrapper.getBoundingClientRect().width / 2;
+            var wrapperRelCenterY = wrapper.getBoundingClientRect().height / 2;
+
+
+            function getDirection(e) {
+
+                var direction = "";
+
+                if (e.clientY < wrapperAbsCenterY) {
+                    direction = "y+";
+                }
+                else if (e.clientY > wrapperAbsCenterY) {
+                    direction = "y-";
+                }
+                else if (e.clientX < wrapperAbsCenterX) {
+                    direction = "x+";
+                }
+                else if (e.clientX > wrapperAbsCenterX) {
+                    direction = "x-"
+                }
+                mover(direction);
+            }
+
+            function mover(d) {
+
+
+                if (d[0] == "y") {
+                    if (d[1] == "+") {
+                        wrapper.style.top = (wrapperAbsCenterY + 50) % cWidth + "px";
+                    } else if (d[1] == "-") {
+                        wrapper.style.top = (wrapperAbsCenterY - 50) % cHeight + "px";
+                    }
+                }
+                else if (d[0] == "x") {
+                    if (d[1] == "+") {
+                        wrapper.style.left = (wrapperAbsCenterX + 50) % cWidth + "px";
+                    } else if (d[1] == "-") {
+                        wrapper.style.left = (wrapperAbsCenterX - 50) % cWidth + "px";
+                    }
+                }
+
+            }
+
+
+            getDirection(e);
+        }
+
+        wrapper.addEventListener("mousemove", wrapperOnmouseOverHandler);
+    })
+</script>
 
 </body>
 </html>
