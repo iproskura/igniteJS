@@ -5,7 +5,46 @@
     <title>Document</title>
 </head>
 <body>
+<ul>
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+    <li>item4</li>
+    <li>item5</li>
+</ul>
 
+<script>
+    window.onload = function () {
+
+        var span = document.createElement('span');
+        var i = 0;
+        var j = 0;
+
+        var anchor = ["beforeBegin", "afterBegin", "beforeEnd", "afterEnd"];
+        var itemList = document.body.getElementsByTagName('*');
+
+        span.innerHTML = "Move it";
+
+        var timer = setInterval(function () {
+            if (document.body.getElementsByTagName('span')) {
+                span.remove();
+            }
+
+            itemList[i].insertAdjacentElement(anchor[j], span);
+
+            j++;
+            if (j == 4) {
+                j = 0;
+                i++;
+            }
+            if (i == itemList.length - 1) {
+                clearInterval(timer);
+            }
+            ;
+        }, 1000);
+    }
+
+</script>
 </body>
 </html>
 

@@ -21,7 +21,7 @@ lesson 5:   classwork:  +++
 ```
 lesson 6:   classwork:  +++
             homework:   +++
-lesson 7:   classwork:  -
+lesson 7:   classwork:  +
             homework:   +++
 lesson 8:   classwork:  +-
             homework:   +++
