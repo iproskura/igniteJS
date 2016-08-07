@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="loader">load json</button>
+
+
+<!-- ####################################### -->
+<script>
+    window.onload = function () {
+
+        function loadHandler() {
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', "files/phones.json");
+            xhr.send();
+            document.getElementById("loader").innerHTML = "Processing";
+            document.getElementById("loader").disabled = true;
+
+            xhr.onload = function () {
+
+                var data = JSON.parse(xhr.responseText);
+                var ul = document.createElement("ul");
+                document.body.appendChild(ul);
+
+                for (var i = 0; i < data.length; i++) {
+                    var li = document.createElement("li");
+                    li.innerHTML = data[i].name;
+                    ul.appendChild(li);
+                }
+            }
+        }  //loadHandler
+
+        document.getElementById("loader").addEventListener("click", loadHandler);
+    };      //window.onload
+</script>
+
+</body>
+</html>
+
+<!--Создайте код, который загрузит файл phones.json и выведет все названия телефонов из него в виде списка.-->
+<!--(файлы для задачи находятся в папке task_phone); -->
+
+
