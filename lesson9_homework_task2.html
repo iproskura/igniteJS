@@ -11,97 +11,88 @@
 
         #wrapper {
             position: absolute;
-            height: 150px;
-            width: 150px;
+            height: 140px;
+            width: 140px;
             background-color: #eee;
+            left: 250px;
+            top: 75px;
         }
 
         #runner {
             position: relative;
             left: 25px;
-            top: 5px;
+            top: 22px;
             text-align: center;
-            background-color: crimson;
-            height: 100px;
-            width: 100px;
+            background-color: coral;
+            height: 90px;
+            width: 90px;
         }
 
-        p {
-            /*text-align: match-parent;*/
+        span {
+            color: #0932cd;
+            font-style: italic;
+            /*font-weight: bold;*/
+            font-size: larger;
+            padding-top: 30px;
+            display: inline-block;
         }
     </style>
-
 </head>
 <body>
 
-<div id="wrapper">
-    <div id="runner">
-        <p>Скидка 75% !</p>
-    </div>
+<div id="runner">
+    <span>Скидка</span>
 </div>
 
-<script>
-    window.addEventListener("load", function () {                   //TODO soooo bugged :(
-        document.body.style.overflow = "hidden";                  //no more scroll
 
+<script>
+    window.addEventListener("load", function () {
+
+        document.body.style.overflow = "hidden";                  //no more scroll
         var cHeight = document.documentElement.clientHeight;      //document dimensions
         var cWidth = document.documentElement.clientWidth;
+        var eps = 50;
 
-        var wrapper = document.getElementById("wrapper");
+        var runner = document.getElementById("runner");
 
-        function wrapperOnmouseOverHandler(e) {
-            var wrapperAbsCenterX = Math.floor(wrapper.getBoundingClientRect().left + wrapper.clientWidth / 2);   //absolute page
-            var wrapperAbsCenterY = Math.floor(wrapper.getBoundingClientRect().top + wrapper.clientHeight / 2);  //position of the center
-
-            var wrapperRelCenterX = wrapper.getBoundingClientRect().width / 2;
-            var wrapperRelCenterY = wrapper.getBoundingClientRect().height / 2;
+        document.addEventListener('mousemove', function (e) {
+            var runner_pos = runner.getBoundingClientRect();
+            var runneX = runner_pos.left + 50;
+            var runnerY = runner_pos.top + 50;
 
 
-            function getDirection(e) {
+            if (Math.sqrt((e.offsetX - runneX) * (e.offsetX - runneX) +
+                            (e.offsetY - runnerY) * (e.offsetY - runnerY)) < 80) {
 
-                var direction = "";
-
-                if (e.clientY < wrapperAbsCenterY) {
-                    direction = "y+";
+                if (runneX >= cWidth - eps) {
+                    runner.style.left = eps / 10 + 'px';
                 }
-                else if (e.clientY > wrapperAbsCenterY) {
-                    direction = "y-";
+                if (runneX <= eps) {
+                    runner.style.left = (cWidth - 2 * eps) + 'px';
                 }
-                else if (e.clientX < wrapperAbsCenterX) {
-                    direction = "x+";
+                if (runnerY >= cHeight - eps) {
+                    runner.style.top = eps / 10 + 'px';
                 }
-                else if (e.clientX > wrapperAbsCenterX) {
-                    direction = "x-"
-                }
-                mover(direction);
-            }
-
-            function mover(d) {
-
-
-                if (d[0] == "y") {
-                    if (d[1] == "+") {
-                        wrapper.style.top = (wrapperAbsCenterY + 50) % cWidth + "px";
-                    } else if (d[1] == "-") {
-                        wrapper.style.top = (wrapperAbsCenterY - 50) % cHeight + "px";
-                    }
-                }
-                else if (d[0] == "x") {
-                    if (d[1] == "+") {
-                        wrapper.style.left = (wrapperAbsCenterX + 50) % cWidth + "px";
-                    } else if (d[1] == "-") {
-                        wrapper.style.left = (wrapperAbsCenterX - 50) % cWidth + "px";
-                    }
+                if (runnerY <= eps) {
+                    runner.style.top = (cHeight - 2 * eps) + 'px';
                 }
 
-            }
 
-
-            getDirection(e);
-        }
-
-        wrapper.addEventListener("mousemove", wrapperOnmouseOverHandler);
-    })
+                if (e.offsetX < runneX) {
+                    runner.style.left = (runner.offsetLeft + 10) + 'px';
+                }
+                if (e.offsetX > runneX) {
+                    runner.style.left = (runner.offsetLeft - 10) + 'px';
+                }
+                if (e.offsetY < runnerY) {
+                    runner.style.top = (runner.offsetTop + 10) + 'px';
+                }
+                if (e.offsetY > runnerY) {
+                    runner.style.top = (runner.offsetTop - 10) + 'px';
+                }
+            } //if (Math....
+        })  //document.onmousemove
+    }) //document.onload
 </script>
 
 </body>
