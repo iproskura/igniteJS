@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            border: 1px dotted coral;
+        }
+    </style>
 </head>
 <body>
+<p>* При нажатии комбинации клавиш ctrl + a (регистр не учитывается!) на экран выводится сообщение ‘Данные выбраны’;
+</p>
+<p>* При нажатии комбинации клавиш ctrl + s (регистр не учитывается!) на экран выводится сообщение ‘Данные сохранены’;
+</p>
 
+
+<div id="output"></div>
+
+<script>
+    window.onload = function () {
+        var output = document.getElementById("output");
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey == true && e.keyCode == '65') output.innerHTML = 'Данные выбраны';
+            e.preventDefault();
+            if (e.ctrlKey == true && e.keyCode == '83') output.innerHTML = 'Данные сохранены';
+        })
+    }
+</script>
 </body>
 </html>
 <!--Создайте страницу. Реализуйте следующее:-->
