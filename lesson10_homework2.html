@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            document.getElementById("btnGet").onclick = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "lesson10_target1.html");
+                xhr.timeout = 20000;
+
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open("GET", "lesson10_target2.html");
+                xhr.timeout = 20000;
+
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            document.getElementById("output").innerHTML += xhr.responseText;
+                        }
+                    }
+                };
+
+                xhr2.onreadystatechange = function () {
+                    if (xhr2.readyState == 4) {
+                        if (xhr2.status == 200) {
+                            document.getElementById("output").innerHTML += xhr2.responseText;
+                        }
+                    }
+                };
+
+                xhr2.ontimeout = function () {
+                    xhr2.abort();
+                };
+                xhr.ontimeout = function () {
+                    xhr.abort();
+                };
+
+                xhr.send();
+                xhr2.send();
+
+            }; //btnGet.onClick
+        }
+    </script>
+
+</head>
+<body>
+<input id="btnGet" type="button" value="Get Info"/>
+<p id="output"></p>
+</body>
+</html>
+
+<!--Модифицируйте код  предыдущего задания так, чтобы максимальное время обработки запроса не превышало 20 секунд
+ и при первышении этого времени запрос был отменен,-->
+<!--а пользователь видел на экране сообщение об ошибке.-->
