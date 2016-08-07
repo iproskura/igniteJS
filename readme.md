@@ -23,7 +23,7 @@ lesson 6:   classwork:  +++
             homework:   +++
 lesson 7:   classwork:  +
             homework:   +++
-lesson 8:   classwork:  +-
+lesson 8:   classwork:  ++
             homework:   +++
 lesson 9:   classwork:  -
             homework:   +*+

@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        div {
+            width: 150px;
+            height: 20px;
+            border: 1px dotted coral;
+            margin-top: 5px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var output = document.getElementById("output");
+            var btn = document.getElementById('btn');
+            var input = document.getElementById("input");
+            btn.onclick = function () {
+                output.innerHTML = input.value;
+            }
+        }
+    </script>
 </head>
 <body>
-<form>
-    <input TYPE="text">
-    <button>Click me</button>
-</form>
 
+<input id="input" type="text" placeholder="Enter some text here">
+<button id='btn'>Add text into container</button>
+<div id='output'></div>
 
 </body>
 </html>
