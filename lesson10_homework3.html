@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("btnSend").onclick = function () {
+
+
+                var valA = document.getElementById('a').value;
+                var valB = document.getElementById('b').value;
+
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "files/CalcHandler.ashx?a=" + valA + "&b=" + valB);
+
+                xhr.send();
+
+                xhr.onload = function () {
+                    document.getElementById("output").innerHTML += xhr.responseText;
+                }
+
+            }; // btnSend.onclick
+        }; //onload
+
+    </script>
+</head>
+<body>
+Arg1:<input type="text" id="a">
+Arg2:<input type="text" id="b">
+<input id="btnSend" type="button" value="Send to calc"/>
+<p id="output"></p>
+</body>
+</html>
+
+<!-- ЗАВДАННЯ НЕ Перевіряв в роботі. немає ні Windows ні VisualStudio  (: -->
+<!-- але в аутпут подає весь files/CalcHandler.ashx тому таск "believed to be done" -->
+
+<!--Разработайте страницу с двумя полями ввода и кнопкой. Пользователь должен вводить в поля ввода
+целочисленный значения, а нажатие по кнопке должно приводить к-->
+<!--асинхронному запросу на сервер. Запрашивать следует обработчик CalcHandler.ashx, который находиться
+вместе с задачей в папке Homework, обработчик принимает два post параметра с именами ‘a’ и ‘b'.-->
+<!--Результат который возвращает обработчик выведите на страницу (рекомендуется выполнять задачу в Visual Studio).-->

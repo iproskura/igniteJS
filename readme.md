@@ -28,6 +28,6 @@ lesson 8:   classwork:  +-
 lesson 9:   classwork:  -
             homework:   +*+
 lesson 10   classwork:  --
-            homework:   ++-
+            homework:   +++
 
 ```
