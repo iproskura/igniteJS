@@ -31,17 +31,20 @@
         var phonePattern = /\d/gi;      //TODO
 
 
-        function submitHandler() {
+        function submitHandler(e) {
             if (form.flogin.value.match(loginPattern)) {
                 form.flogin.style.borderColor = "red";
+                e.preventDefault();
             }
             ;
             if (form.fpassword.value.match(passwordPattern)) {
                 form.fpassword.style.borderColor = "red";
+                e.preventDefault();
             }
             ;
             if (!form.fphone.value.match(phonePattern)) {
                 form.fphone.style.borderColor = "red";
+                e.preventDefault();
             }
 
         }
