@@ -7,11 +7,11 @@
 
 function myTimer() {
     var counter = 1;
-    return setInterval(function () {
+    var myCounter =  setInterval(function () {
 
         console.log(counter);
         if (counter >= 20) {
-            clearInterval(this);
+            clearInterval(myCounter);
             console.log("timer is over");
         }
         counter++;
