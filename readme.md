@@ -1,7 +1,28 @@
 # igniteJS
 ignite js course homework and classwork solutions by Igor Proskura
+######checklist:
+_Angular:_
+```
+lesson 11:  classwork:  ---
+            homework:   ---
+lesson 12:  classwork:  ---
+            homework:   ---
+lesson 13:  classwork:  ---
+            homework:   ---
+lesson 14:  classwork:  ---
+            homework:   ---
+            
+lesson 15:  classwork:  ---
+            homework:   ---
+lesson 16:  classwork:  ---
+            homework:   ---
+lesson 17:  classwork:  ---
+            homework:   ---
+lesson 18:  classwork:  ---
+            homework:   ---
+```
 
-####checklist:
+_JavaScript:_
 ```
 lesson 1:   classwork:  +++
             homework:   +++
@@ -17,8 +38,8 @@ lesson 4:   classwork:  +++
 
 lesson 5:   classwork:  +++
             homework:   +++
-```
-```
+___________________________
+
 lesson 6:   classwork:  +++
             homework:   +++
 lesson 7:   classwork:  +
