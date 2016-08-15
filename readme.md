@@ -1,7 +1,7 @@
 # igniteJS
 ignite js course homework and classwork solutions by Igor Proskura
 ######checklist:
-_Angular:_
+_Angular_
 ```
 lesson 11:  classwork:  ---
             homework:   ---
