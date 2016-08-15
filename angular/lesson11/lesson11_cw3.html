@@ -11,16 +11,19 @@
                     var name = "Enter name";
                     $scope.name = "";
 
-                    $scope.showName = function () {
-                        var output = document.getElementById("output");
-                        output.innerHTML = $scope.name;
-                    }
+//                    $scope.showName = function () {
+//                        var output = document.getElementById("output");
+//                        output.innerHTML = $scope.name;
+//                    }
                 }]);
     </script>
 </head>
 <body ng-controller="MainCtrl">
 
-<input type="text" ng-model="name" class="input-lg" ng-keypress="showName()">
+<!--<input type="text" ng-model="name" class="input-lg" ng-keypress="showName()">-->
+<input type="text" ng-model="name" class="input-lg">
+<div>{{name}}</div>
+
 <!--<input type="button" value="click here!" class="btn btn-large" ng-click="showName()">-->
 <div id="output"></div>
 </body>
