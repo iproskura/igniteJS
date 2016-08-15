@@ -3,7 +3,7 @@ ignite js course homework and classwork solutions by Igor Proskura
 ######checklist:
 _Angular_
 ```
-lesson 11:  classwork:  ---
+lesson 11:  classwork:  +++
             homework:   ---
 lesson 12:  classwork:  ---
             homework:   ---

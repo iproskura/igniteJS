@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SayHello">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
+    <script src="../libs/angular.js"></script>
+    <script src="../libs/bootstrap.css"></script>
+    <script>
+        angular.module("SayHello", [])
+                .controller("MainCtrl", ["$scope", function ($scope) {
+                    var name = "Enter name";
+                    $scope.name = "";
 
+                    $scope.showName = function () {
+                        var output = document.getElementById("output");
+                        output.innerHTML = $scope.name;
+                    }
+                }]);
+    </script>
+</head>
+<body ng-controller="MainCtrl">
+
+<input type="text" ng-model="name" class="input-lg" ng-keypress="showName()">
+<!--<input type="button" value="click here!" class="btn btn-large" ng-click="showName()">-->
+<div id="output"></div>
 </body>
 </html>
 <!--Модифицируйте код предыдущей задачи таким образом, чтобы содержимое поля ввода выводилось на страницу сразу(без нажатия на кнопку)-->
