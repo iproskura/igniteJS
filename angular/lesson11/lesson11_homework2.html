@@ -56,11 +56,11 @@
             <th>Completed</th>
         </tr>
         </thead>
-        <!-- TODO pretty format date -->
+
         <tr ng-repeat="task in data">
             <td>{{task.name}}</td>
             <td>{{task.desc}}</td>
-            <td>{{task.date}}</td>
+            <td>{{task.date | date}}</td>
             <td>{{task.check}}</td>
         </tr>
     </table>
