@@ -5,7 +5,7 @@ _Angular_
 ```
 lesson 11:  classwork:  +++
             homework:   +-
-lesson 12:  classwork:  ++-
+lesson 12:  classwork:  +++
             homework:   ---
 lesson 13:  classwork:  ---
             homework:   ---
