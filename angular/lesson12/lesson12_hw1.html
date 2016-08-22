@@ -1,18 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lesson12 hw task 1</title>
 
     <script src="../libs/angular.js"></script>
     <link href="../libs/bootstrap.css" rel="stylesheet"/>
     <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.result = "";
+
+            // EAFP . no error handling
+
+            $scope.plusHandler = function () {
+                if ($scope.num1 && $scope.num2) {
+                    $scope.result = $scope.num1 + $scope.num2;
+                } else {
+                    $scope.result = "Please input valid nums"
+                }
+            };
+
+            $scope.minusHandler = function () {
+                if ($scope.num1 && $scope.num2) {
+                    $scope.result = $scope.num1 - $scope.num2
+                } else {
+                    $scope.result = "Please input valid nums"
+                }
+            };
+
+            $scope.multiplyHandler = function () {
+                if ($scope.num1 && $scope.num2) {
+                    $scope.result = $scope.num1 * $scope.num2
+                } else {
+                    $scope.result = "Please input valid nums"
+                }
+            };
+
+            $scope.divHandler = function () {
+                if (parseInt($scope.num2 == 0)) {
+                    result = "div by zero err";
+                } else if ($scope.num1 && $scope.num2) {
+                    $scope.result = $scope.num1 / $scope.num2
+                } else {
+                    $scope.result = "Please input valid nums"
+                }
+            };
+
+        }]); // endof mainCtrl
+    </script>
+
 </head>
-<body>
+<body ng-controller="mainCtrl">
+<div class="panel">
+    <form role="form">
+        <div class="form-group">
+            <label>num1</label>
+            <input type="number" ng-model="num1">
+        </div>
+        <div class="form-group">
+            <label>num2</label>
+            <input type="number" ng-model="num2">
+        </div>
+        <div class="form-group">
+            <button class="btn" ng-click="plusHandler()">+</button>
+            <button class="btn" ng-click="minusHandler()">-</button>
+            <button class="btn" ng-click="multiplyHandler()">*</button>
+            <button class="btn" ng-click="divHandler()">/</button>
+        </div>
+
+        <div class="form-group">
+            <label>result</label>
+            <span ng-bind="result"></span>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
 <!--
 ###Задача 1
-Создайте приложение-калькулятор. В приложении должно быть два поля ввода и кнопки «+», «-», «*», «/». Реализуйте двунаправленную привязку таким образом, чтобы при нажатии на кнопки результат арифметических операций выводился на странице.
+Создайте приложение-калькулятор. В приложении должно быть два поля ввода и кнопки «+», «-», «*», «/».
+Реализуйте двунаправленную привязку таким образом, чтобы при нажатии на кнопки результат арифметических операций выводился на странице.
 -->
