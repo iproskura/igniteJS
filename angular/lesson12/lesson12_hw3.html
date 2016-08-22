@@ -1,18 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lesson12 hw task 3</title>
     <script src="../libs/angular.js"></script>
     <link href="../libs/bootstrap.css" rel="stylesheet"/>
     <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        body > div > div {
+            display: inline-block;
+            border-right: 1px dotted darkcyan;
+            padding: 8px;
+        }
+
+        div > label {
+            display: block;
+        }
+
+        p {
+            margin: 6px;
+        }
+    </style>
+    <script>
+        var model = [{
+            que: "q1",
+            ans: ["1a", "1o", "1e", "1u", "1y"]
+        }, {
+            que: "q2",
+            ans: ["2a", "2o", "2e", "2u", "2y"]
+        }, {
+            que: "q3",
+            ans: ["3a", "3o", "3e", "3u", "3y"]
+        }, {
+            que: "q4",
+            ans: ["4a", "4o", "4e", "4u", "4y"]
+        }, {
+            que: "q5",
+            ans: ["5a", "5o", "5e", "5u", "5y"]
+        }];
+
+        var myApp = angular.module("myApp", []);
+        myApp.controller("mainCtrl", ["$scope", function ($scope) {
+
+            $scope.data = model;
+            $scope.question = 0;
+            $scope.result = [5];
+
+        }]); // endof mainCtrl
+    </script>
 
 </head>
-<body>
-
+<body ng-controller="mainCtrl">
+<div ng-switch="question">
+    <!-- questions section -->
+    <div id="questions">
+        <span>select Q</span>
+        <label><input type="radio" ng-model="question" value="0">Q:{{data[0].que}}</label>
+        <label><input type="radio" ng-model="question" value="1">Q:{{data[1].que}}</label>
+        <label><input type="radio" ng-model="question" value="2">Q:{{data[2].que}}</label>
+        <label><input type="radio" ng-model="question" value="3">Q:{{data[3].que}}</label>
+        <label><input type="radio" ng-model="question" value="4">Q:{{data[4].que}}</label>
+    </div>
+    <!-- q1 section -->
+    <div class="answers" ng-switch-when="0">
+        <span>question 1</span>
+        <label><input type="radio" ng-model="result[0]" value="0">ans : {{data[0].ans[0]}}</label>
+        <label><input type="radio" ng-model="result[0]" value="1">ans : {{data[0].ans[1]}}</label>
+        <label><input type="radio" ng-model="result[0]" value="2">ans : {{data[0].ans[2]}}</label>
+        <label><input type="radio" ng-model="result[0]" value="3">ans : {{data[0].ans[3]}}</label>
+        <label><input type="radio" ng-model="result[0]" value="4">ans : {{data[0].ans[4]}}</label>
+    </div>
+    <!-- q2 section -->
+    <div class="answers" ng-switch-when="1">
+        <span>question 1</span>
+        <label><input type="radio" ng-model="result[1]" value="0">ans : {{data[1].ans[0]}}</label>
+        <label><input type="radio" ng-model="result[1]" value="1">ans : {{data[1].ans[1]}}</label>
+        <label><input type="radio" ng-model="result[1]" value="2">ans : {{data[1].ans[2]}}</label>
+        <label><input type="radio" ng-model="result[1]" value="3">ans : {{data[1].ans[3]}}</label>
+        <label><input type="radio" ng-model="result[1]" value="4">ans : {{data[1].ans[4]}}</label>
+    </div>
+    <!-- q3 section -->
+    <div class="answers" ng-switch-when="2">
+        <span>question 1</span>
+        <label><input type="radio" ng-model="result[2]" value="0">ans : {{data[2].ans[0]}}</label>
+        <label><input type="radio" ng-model="result[2]" value="1">ans : {{data[2].ans[1]}}</label>
+        <label><input type="radio" ng-model="result[2]" value="2">ans : {{data[2].ans[2]}}</label>
+        <label><input type="radio" ng-model="result[2]" value="3">ans : {{data[2].ans[3]}}</label>
+        <label><input type="radio" ng-model="result[2]" value="4">ans : {{data[2].ans[4]}}</label>
+    </div>
+    <!-- q4 section -->
+    <div class="answers" ng-switch-when="3">
+        <span>question 1</span>
+        <label><input type="radio" ng-model="result[3]" value="0">ans : {{data[3].ans[0]}}</label>
+        <label><input type="radio" ng-model="result[3]" value="1">ans : {{data[3].ans[1]}}</label>
+        <label><input type="radio" ng-model="result[3]" value="2">ans : {{data[3].ans[2]}}</label>
+        <label><input type="radio" ng-model="result[3]" value="3">ans : {{data[3].ans[3]}}</label>
+        <label><input type="radio" ng-model="result[3]" value="4">ans : {{data[3].ans[4]}}</label>
+    </div>
+    <!-- q5 section -->
+    <div class="answers" ng-switch-when="4">
+        <span>question 1</span>
+        <label><input type="radio" ng-model="result[4]" value="0">ans : {{data[4].ans[0]}}</label>
+        <label><input type="radio" ng-model="result[4]" value="1">ans : {{data[4].ans[1]}}</label>
+        <label><input type="radio" ng-model="result[4]" value="2">ans : {{data[4].ans[2]}}</label>
+        <label><input type="radio" ng-model="result[4]" value="3">ans : {{data[4].ans[3]}}</label>
+        <label><input type="radio" ng-model="result[4]" value="4">ans : {{data[4].ans[4]}}</label>
+    </div>
+    <!-- result section-->
+    <div>
+        <p>Q1 ans is:{{data[0].ans[result[0]]}}</p>
+        <p>Q2 ans is:{{data[1].ans[result[1]]}}</p>
+        <p>Q3 ans is:{{data[2].ans[result[2]]}}</p>
+        <p>Q4 ans is:{{data[3].ans[result[3]]}}</p>
+        <p>Q5 ans is:{{data[4].ans[result[4]]}}</p>
+    </div>
+</div>
 </body>
 </html>
 <!--
-Реализуйте SPA приложение, в котором пользователю представляется пройти тест из 5 вопросов, в каждом вопросе по 4 варианта ответа. Вопросы должны выбираться с помощью radio-button и когда выбран, например, вопрос №1, то на странице должны появится варианты ответа только для этого вопроса. В конце тестирования отобразите результат теста. При решении данной задачи используйте директиву ng-switch.
+Реализуйте SPA приложение, в котором пользователю представляется пройти тест из 5 вопросов, в каждом вопросе по 4
+варианта ответа. Вопросы должны выбираться с помощью radio-button и когда выбран, например, вопрос №1,
+то на странице должны появится варианты ответа только для этого вопроса. В конце тестирования отобразите результат теста.
+При решении данной задачи используйте директиву ng-switch.
 -->
 

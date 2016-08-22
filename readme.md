@@ -6,7 +6,7 @@ _Angular_
 lesson 11:  classwork:  +++
             homework:   +/
 lesson 12:  classwork:  +++
-            homework:   ++-
+            homework:   +++
 lesson 13:  classwork:  ---
             homework:   ---
 lesson 14:  classwork:  ---
