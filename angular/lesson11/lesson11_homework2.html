@@ -26,39 +26,37 @@
             desc: "do all class- and homeworks",
             date: new Date(2018, 2, 18),
             check: false
-        }
-        ];
+        }];
 
         angular.module("ToDoList", [])
                 .controller("todoCtrl", ["$scope", function ($scope) {
                     $scope.data = model;
+                    $scope.id = $scope.data.length;
+                    // init
+                    $scope.taskId = "";
+                    $scope.taskName = "";
+                    $scope.taskDesc = "";
+                    $scope.taskDate = new Date();
+                    $scope.taskCheck = false;
 
-                    $scope.editTask = function (id) {
-                        if (id == 'new') {
-                            $scope.data.push({
-                                        id: $scope.data.length + 1,
-                                        name: $scope.taskName,
-                                        desc: $scope.taskDesc,
-                                        date: $scope.taskDate,
-                                        check: $scope.taskCheck
-                                    }
-                            )
-                        } else {
-                            $scope.taskId = $scope.data[id].id;
-                            $scope.taskName = $scope.data[id - 1].name;
-                            $scope.taskDesc = $scope.data[id - 1].desc;
-//                            $scope.taskDate = $scope.data[id - 1].date;
-                            $scope.taskCheck = $scope.data[id - 1].check;
+
+                    $scope.editTask = function (task) {
+                        if (task && task !== "new") {
+                            $scope.taskId = task.id;
+                            $scope.taskName = task.name;
+                            $scope.taskDesc = task.desc;
+                            $scope.taskCheck = task.check;
+                            $scope.id = $scope.data.indexOf(task);
+                        } else if (!arguments) {
+                            $scope.data[id] = {
+                                name: $scope.taskName,
+                                desc: $scope.taskDesc,
+                                date: new Date ($scope.taskDate),
+                                check: $scope.taskCheck
+                            };
                         }
 
-                        // init
-//                        $scope.id = $scope.data.length;
-                        $scope.taskId = "";
-                        $scope.taskName = "";
-                        $scope.taskDesc = "";
-                        $scope.taskDate = new Date();
-                        $scope.taskCheck = false;
-                    }
+                    }; //endof editTask
                 }]);
     </script>
 
@@ -83,7 +81,7 @@
 
         <tr ng-repeat="task in data">
             <td>
-                <button class="btn btn-edit" ng-click="editTask(task.id)">&#9998; {{task.id}}</button>
+                <button class="btn btn-edit" ng-click="editTask(task)">&#9998;</button>
             </td>
             <td>{{task.name}}</td>
             <td>{{task.desc}}</td>
@@ -99,7 +97,7 @@
         <form role="form">
             <div class="form-group">
                 <label>ID:</label>
-                <input type="number" class="form-control" ng-model="taskId" disabled>
+                <input type="number" class="form-control" ng-model="taskId">
             </div>
             <div class="form-group">
                 <label>Task name</label>
@@ -116,7 +114,7 @@
             <div class="checkbox">
                 <label><input type="checkbox" ng-model="taskCheck">Completed</label>
             </div>
-            <button class="btn btn-default" ng-click="editTask('new')">&#10004; Add task</button>
+            <button class="btn btn-default" ng-click="editTask()">&#10004; Save</button>
         </form>
     </div>
 </div>

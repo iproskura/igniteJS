@@ -4,7 +4,7 @@ ignite js course homework and classwork solutions by Igor Proskura
 _Angular_
 ```
 lesson 11:  classwork:  +++
-            homework:   +-
+            homework:   +/
 lesson 12:  classwork:  +++
             homework:   ---
 lesson 13:  classwork:  ---
