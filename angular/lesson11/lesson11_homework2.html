@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="ToDoList" xmlns="http://www.w3.org/1999/html">
+<html ng-app="ToDoList" lang="en">
 <head>
+    <meta charset="utf-8">
     <title>ToDo List (Task1)</title>
     <script src="../libs/angular.js"></script>
     <link href="../libs/bootstrap.css" rel="stylesheet"/>
@@ -8,30 +9,51 @@
     <script>
 
         var model = [{
+            id: 1,
             name: "buy milk",
             desc: "go to market and by milk",
             date: new Date(2015, 2, 18),
             check: false
         }, {
+            id: 2,
             name: "watch angularJS vids",
             desc: "watch full length videos on some site",
             date: new Date(2015, 2, 18),
             check: true
-        }];
+        }, {
+            id: 3,
+            name: "todo homeworks",
+            desc: "do all class- and homeworks",
+            date: new Date(2018, 2, 18),
+            check: false
+        }
+        ];
 
         angular.module("ToDoList", [])
                 .controller("todoCtrl", ["$scope", function ($scope) {
                     $scope.data = model;
 
-                    $scope.addNewTask = function () {
-                        $scope.data.push({
-                                    name: $scope.taskName,
-                                    desc: $scope.taskDesc,
-                                    date: $scope.taskDate,
-                                    check: $scope.taskCheck
-                                }
-                        );
+                    $scope.editTask = function (id) {
+                        if (id == 'new') {
+                            $scope.data.push({
+                                        id: $scope.data.length + 1,
+                                        name: $scope.taskName,
+                                        desc: $scope.taskDesc,
+                                        date: $scope.taskDate,
+                                        check: $scope.taskCheck
+                                    }
+                            )
+                        } else {
+                            $scope.taskId = $scope.data[id].id;
+                            $scope.taskName = $scope.data[id - 1].name;
+                            $scope.taskDesc = $scope.data[id - 1].desc;
+//                            $scope.taskDate = $scope.data[id - 1].date;
+                            $scope.taskCheck = $scope.data[id - 1].check;
+                        }
 
+                        // init
+//                        $scope.id = $scope.data.length;
+                        $scope.taskId = "";
                         $scope.taskName = "";
                         $scope.taskDesc = "";
                         $scope.taskDate = new Date();
@@ -47,9 +69,11 @@
 
     <h3>ToDo List</h3>
 
+    <!-- output model -->
     <table class="table table-responsive">
         <thead>
         <tr>
+            <th>Edit</th>
             <th>Name</th>
             <th>Description</th>
             <th>Date</th>
@@ -58,18 +82,25 @@
         </thead>
 
         <tr ng-repeat="task in data">
+            <td>
+                <button class="btn btn-edit" ng-click="editTask(task.id)">&#9998; {{task.id}}</button>
+            </td>
             <td>{{task.name}}</td>
             <td>{{task.desc}}</td>
             <td>{{task.date | date: 'dd/MM/yyyy'}}</td>
             <td>{{task.check}}</td>
         </tr>
     </table>
+    <br>
 
+    <!--<button class="btn btn-default" ng-click="editTask('new')">Add task</button>-->
     <div class="panel">
         <!-- Форма для добавления новых задач -->
         <form role="form">
-            <h3>Add task</h3>
-
+            <div class="form-group">
+                <label>ID:</label>
+                <input type="number" class="form-control" ng-model="taskId" disabled>
+            </div>
             <div class="form-group">
                 <label>Task name</label>
                 <input type="text" class="form-control" ng-model="taskName">
@@ -85,12 +116,31 @@
             <div class="checkbox">
                 <label><input type="checkbox" ng-model="taskCheck">Completed</label>
             </div>
-            <button class="btn btn-default" ng-click="addNewTask()">Add task</button>
+            <button class="btn btn-default" ng-click="editTask('new')">&#10004; Add task</button>
         </form>
     </div>
 </div>
 </body>
 </html>
+
 <!--###Задача2-->
 <!--Добавьте в предыдущую задачу возможность пользователя редактировать задачи и
 сохранять результат после редактирования-->
+
+
+<!--
+<div ng-app="" ng-init="mySwitch=true">
+
+    <p>
+        <button ng-disabled="mySwitch">Click Me!</button>
+    </p>
+
+    <p>
+        <input type="checkbox" ng-model="mySwitch">Button
+    </p>
+
+    <p>
+        {{ mySwitch }}
+    </p>
+
+</div>-->
