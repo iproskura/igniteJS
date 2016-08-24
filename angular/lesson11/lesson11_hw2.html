@@ -31,7 +31,6 @@
         angular.module("ToDoList", [])
                 .controller("todoCtrl", ["$scope", function ($scope) {
                     $scope.data = model;
-                    $scope.id = $scope.data.length;
                     // init
                     $scope.taskId = "";
                     $scope.taskName = "";
@@ -39,24 +38,23 @@
                     $scope.taskDate = new Date();
                     $scope.taskCheck = false;
 
-
                     $scope.editTask = function (task) {
-                        if (task && task !== "new") {
-                            $scope.taskId = task.id;
-                            $scope.taskName = task.name;
-                            $scope.taskDesc = task.desc;
-                            $scope.taskCheck = task.check;
-                            $scope.id = $scope.data.indexOf(task);
-                        } else if (!arguments) {
-                            $scope.data[id] = {
-                                name: $scope.taskName,
-                                desc: $scope.taskDesc,
-                                date: new Date ($scope.taskDate),
-                                check: $scope.taskCheck
-                            };
-                        }
 
-                    }; //endof editTask
+                        $scope.taskId = task.id;
+                        $scope.taskName = task.name;
+                        $scope.taskDesc = task.desc;
+                        $scope.taskCheck = task.check;
+
+                    };  //endof editTask
+
+                    $scope.saveTask = function () {
+                        $scope.data[$scope.taskId-1] = {
+                            name: $scope.taskName,
+                            desc: $scope.taskDesc,
+                            date: new Date($scope.taskDate),
+                            check: $scope.taskCheck
+                        };
+                    }
                 }]);
     </script>
 
@@ -114,7 +112,7 @@
             <div class="checkbox">
                 <label><input type="checkbox" ng-model="taskCheck">Completed</label>
             </div>
-            <button class="btn btn-default" ng-click="editTask()">&#10004; Save</button>
+            <button class="btn btn-default" ng-click="saveTask()">&#10004; Save</button>
         </form>
     </div>
 </div>
@@ -124,21 +122,3 @@
 <!--###Задача2-->
 <!--Добавьте в предыдущую задачу возможность пользователя редактировать задачи и
 сохранять результат после редактирования-->
-
-
-<!--
-<div ng-app="" ng-init="mySwitch=true">
-
-    <p>
-        <button ng-disabled="mySwitch">Click Me!</button>
-    </p>
-
-    <p>
-        <input type="checkbox" ng-model="mySwitch">Button
-    </p>
-
-    <p>
-        {{ mySwitch }}
-    </p>
-
-</div>-->
