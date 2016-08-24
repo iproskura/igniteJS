@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taskApp">
+<head>
+    <meta charset="utf-8">
+    <title>14 cw 2</title>
+
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script src="../libs/angular.js"></script>
+    <script>
+        var app = angular.module('taskApp', []);
+
+        app.provider("clickCounter", function () {
+            return {
+                $get: function ($log) {
+                    var clickCounter = 1;
+                    return function (msg) {
+                        var output = msg + clickCounter++;
+                        $log.info(output);
+                        return output;
+                    };
+                }
+            }
+        });
+
+        app.controller('mainCtrl', ['$scope', "clickCounter", function ($scope, clickCounter) {
+            $scope.msg = "click count : ";
+            $scope.output = "click count : 0";
+
+            $scope.clickCountHandler = function () {
+                $scope.output = clickCounter($scope.msg);
+            }
+
+        }]);
+        //        *******************************************
+        /*
+         app.factory("clickCounterService", function ($log) {
+         var clickCounter = 1;
+         return function (msg) {
+         var output = msg + clickCounter++;
+         $log.info(output);
+         return output;
+         };
+         }); // clickCounterService
+         */
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<input type="button" class="btn btn-default" ng-click="clickCountHandler()" value="Click me">
+<span>{{output}}</span>
+</body>
+</html>
+<!--
+
+###Задача 2
+Создайте сервис из прeдыдущей задачи, используя метод провайдера. -->
