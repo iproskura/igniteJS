@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taskApp">
+<head>
+    <meta charset="utf-8">
+    <title>14 cw 3</title>
+
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script src="../libs/angular.js"></script>
+
+    <!--<style>-->
+    <!--thead th-->
+    <!--</style>-->
+    <script>
+
+        var app = angular.module('taskApp', []);
+        app.controller('mainCtrl', ['$scope', "$http", function ($scope, $http) {
+
+            $scope.dataReadyState = false;
+
+            $scope.clickHandler = function () {
+                $http({
+                    method: "GET",
+                    url: "data/data.json"
+                }).then(function successHandler(response) {
+                    $scope.items = response.data;
+                    $scope.dataReadyState = true;
+
+
+                }, function errorHandler(response) {
+                    alert("err" + response.statusText);
+
+                });     // $http
+            };      //clickHandler
+
+        }]); //controller
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well">
+    <input type="button" class="btn btn-default" value="get to the choppa" ng-click="clickHandler()">
+</div>
+<table class="table">
+    <thead>
+    <tr ng-show="dataReadyState">
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- [{ "name": "item 1", "price": 1.20 },...] -->
+    <tr ng-repeat="item in items">
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
+
+<!--
+###Задача 3
+Используйте сервис $http для получения данных из файла data.json, который находится в папке data.
+Отобразите полученные данные на странице в виде таблицы. Предусмотрите обработку ошибок в запросе (используя Promise).
+-->
