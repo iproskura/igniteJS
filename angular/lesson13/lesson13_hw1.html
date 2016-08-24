@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 13 hw 1</title>
+
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+
+    <style>
+        div {
+            max-width: 400px;
+            border: 1px dotted cadetblue;
+        }
+
+        .aClass {
+            background-color: #c0a16b;
+        }
+
+        .bClass {
+            border: 1px dotted coral;
+        }
+
+        .cClass {
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.styleObj = {
+                aClass: false,
+                bClass: false,
+                cClass: false
+            }
+        }])
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div>
+    <input type="checkbox" ng-model="styleObj.aClass">aClass </br>
+    <input type="checkbox" ng-model="styleObj.bClass">aClass </br>
+    <input type="checkbox" ng-model="styleObj.cClass">aClass </br>
+    <p ng-class="styleObj">When the furner sings for fort charles, all bilge rats trade proud, big lubbers.</p>
+</div>
+</body>
+</html>
+
+<!--
+###Задача 1
+Создайте три разных CSS класса, которые по-разному будут оформлять блок текста на странице.
+ Реализуйте возможность выбирать стиль для оформления страницы с помощью кнопок или checkbox
+-->
