@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 13 cw 1</title>
+
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+        }
+
+        .red {
+            background-color: crimson;
+        }
+
+        .bord {
+            border: 1px dotted coral;
+            border-radius: 50%;
+        }
+    </style>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.applyClass = "";
+
+            $scope.applyStyle = function () {
+                $scope.applyClass = ["red", "bord"];
+            }
+        }])
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div ng-class="applyClass"></div>
+<button class="btn btn-default" ng-click="applyStyle()">Apply</button>
+
+</body>
+</html>
+<!--
+###Задача1
+Создайте страницу с элементом div и кнопкой. Реализуйте следующее:
+При нажатии на кнопку элементу div присваиваются 2 CSS-класса
+-->
