@@ -11,6 +11,7 @@
     <script>
         var app = angular.module("myApp", []);
         app.controller("mainCtrl", ["$scope", function ($scope) {
+
             $scope.items = [
                 {name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10},
                 {name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12},
@@ -25,7 +26,12 @@
     <table class="table table-responsive">
         <thead>
         <tr>
-            <th ng-repeat="(key, v) in items[0]">{{key}}</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>count</th>
+            <th>tax</th>
+            <th>expiration</th>
         </tr>
         </thead>
         <tbody>
