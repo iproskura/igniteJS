@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 13 hw 2</title>
+
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        .input-group {
+            width: 400px;
+        }
+
+        div {
+            margin: 5px;
+            padding-top: 14px;
+            height: 50px;
+            width: 400px;
+            border: 3px dotted coral;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .red {
+            background-color: #d9534f;
+        }
+
+        .blue {
+            background-color: cornflowerblue;
+        }
+
+        .green {
+            background-color: #5cb85c;
+        }
+    </style>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+
+//            $scope.num = (Math.ceil(Math.random() * 9));
+//            Golds die with strength at the coal-black port degas!
+            $scope.divs = [
+                {
+                    text: "Golds",
+                    style: "red"
+                }, {
+                    text: "Golds die",
+                    style: "blue"
+                }, {
+                    text: "Golds die with",
+                    style: "green"
+                }, {
+                    text: "Golds die with strength",
+                    style: "red"
+                }, {
+                    text: "Golds die with strength at",
+                    style: "blue"
+                }, {
+                    text: "Golds die with strength at the",
+                    style: "green"
+                }, {
+                    text: "Golds die with strength at the coal",
+                    style: "blue"
+                }, {
+                    text: "Golds die with strength at the coal-black",
+                    style: "red"
+                }, {
+                    text: "Golds die with strength at the coal-black port",
+                    style: "green"
+                }, {
+                    text: "Golds die with strength at the coal-black port degas!",
+                    style: "red"
+                }
+
+            ]
+
+            var filterCrit = "";
+            $scope.myFilter = function (item) {
+                if (item.text.indexOf(filterCrit) >= 0) {
+                    return item;
+                }
+            };
+
+            $scope.applyFilter = function () {
+                filterCrit = $scope.filterText;
+            }
+        }])
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<section class="input-group">
+    <input class="form-control" type="text" ng-model="filterText" placeholder="filter text">
+    <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="applyFilter()">Apply</button>
+    </span>
+</section>
+<section class="" ng-repeat="divi in divs  | filter: myFilter ">
+    <div ng-class="divi.style">{{divi.text}}</div>
+</section>
+
+</body>
+</html>
+
+<!--
+###Задача 2
+Создайте страницу с десятью тегами div с текстом, полем ввода и кнопкой. Добавьте фильтр,
+который при вводе значения в поле и после нажатия на кнопку, покажет пользователю только те блоки,
+текст в которых соответствуют введеному значению. Остальные блоки должны быть скрыты.
+-->
