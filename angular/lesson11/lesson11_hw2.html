@@ -31,13 +31,14 @@
         angular.module("ToDoList", [])
                 .controller("todoCtrl", ["$scope", function ($scope) {
                     $scope.data = model;
-                    // init
-                    $scope.taskId = "";
-                    $scope.taskName = "";
-                    $scope.taskDesc = "";
-                    $scope.taskDate = new Date();
-                    $scope.taskCheck = false;
 
+                    $scope.clearForm = function () {
+                        $scope.taskId = "";
+                        $scope.taskName = "";
+                        $scope.taskDesc = "";
+                        $scope.taskDate = new Date();
+                        $scope.taskCheck = false;
+                    };
                     $scope.editTask = function (task) {
 
                         $scope.taskId = task.id;
@@ -48,14 +49,17 @@
                     };  //endof editTask
 
                     $scope.saveTask = function () {
-                        $scope.data[$scope.taskId-1] = {
+                        $scope.data[$scope.taskId - 1] = {
                             id: $scope.taskId,
                             name: $scope.taskName,
                             desc: $scope.taskDesc,
                             date: new Date($scope.taskDate),
                             check: $scope.taskCheck
                         };
-                    }
+                    };
+
+                    // init
+                    $scope.clearForm();
                 }]);
     </script>
 
@@ -114,6 +118,7 @@
                 <label><input type="checkbox" ng-model="taskCheck">Completed</label>
             </div>
             <button class="btn btn-default" ng-click="saveTask()">&#10004; Save</button>
+            <button class="btn btn-default" ng-click="clearForm()">&empty; Clear Form</button>
         </form>
     </div>
 </div>
