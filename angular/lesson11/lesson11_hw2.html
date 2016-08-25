@@ -49,6 +49,7 @@
 
                     $scope.saveTask = function () {
                         $scope.data[$scope.taskId-1] = {
+                            id: $scope.taskId,
                             name: $scope.taskName,
                             desc: $scope.taskDesc,
                             date: new Date($scope.taskDate),
