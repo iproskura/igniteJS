@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+        var app = angular.module("myApp", [])
+                .controller("mainCtrl", ["$scope", "$interval", function ($scope, $interval) {
+
+                    $scope.timer = 0;
+                    var counter;
+
+                    $scope.startCounter = function () {
+                        if ($scope.timer !== 0) {
+                            $scope.timer = 0;
+                        }
+                        counter = $interval(function () {
+                            $scope.timer++;
+                        }, 1000)
+                    };
+                    $scope.stopCounter = function () {
+                        $interval.cancel(counter);
+                    }
+                }]);
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="watch">
+    <h2>{{timer}}</h2>
+    <button class="btn-lg btn-info" ng-click="startCounter()">&blacktriangleright; Start</button>
+    <button class="btn-lg btn-danger" ng-click="stopCounter()">&blacksquare; Stop</button>
+
+</div>
+</body>
+</html>
+<!--
+###Задача 2
+Создайте страницу с двумя кнопками Start и Stop. Реализуйте следующее:
+* при нажатии на кнопку start, на страницу начинают выводиться чила в возрастающем порядке с интервалом 1 с.
+* При нажатии на кнопку stop вывод чисел останавливается.
+* При нажатии на кнопку start отсчет начинается всегда с 0.
+ -->
