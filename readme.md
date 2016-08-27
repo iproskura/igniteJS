@@ -12,7 +12,7 @@ lesson 13:  classwork:  +++
 lesson 14:  classwork:  +++
             homework:   ++
             
-lesson 15:  classwork:  ++-
+lesson 15:  classwork:  ++*
             homework:   --
 lesson 16:  classwork:  --
             homework:   ---

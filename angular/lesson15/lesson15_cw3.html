@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <script src="../libs/angular-cookies.js"></script>
+
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        body > div > div {
+            width: 33%;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+    <script>
+
+        var app = angular.module("myApp", ["ngCookies"]);
+
+        //        https://code.angularjs.org/1.5.8/docs/api/ngCookies/service/$cookies
+
+        app.factory("cookieFactory", ["$cookies", function ($cookies) {
+            return {
+                create: function (id, val, exp) {
+                    console.log("call create(id:" + id + " val: " + val + " exp: " + exp + ")");
+                    var expireDate = angular.isDate(exp) ? new Date(exp) : "Session";
+
+                    if (angular.isDefined(id) && angular.isDefined(val)) {
+                        $cookies.put(id, value, {expires: expireDate});
+                        return true;
+                    } else {
+                        console.log("unvalid id or value");
+                        return false;
+                    }
+                },
+                remove: function (id) {
+                    if (angular.isDefined($cookies.get(id))) {
+                        console.log("removed cookie: " + id);
+                        $cookies.remove(id);
+                        return true;
+                    } else {
+                        console.log("no cookie or wrong id = " + id);
+                        return false;
+                    }
+                },
+                getAll: function () {
+                    console.log("getting all cookies");
+                    return $cookies.getAll();
+                }
+            }
+        }]);
+
+        app.controller("mainCtrl", ["$scope", "cookieFactory", function ($scope, cookieFactory) {
+            //init
+            $scope.cookies = cookieFactory.getAll();
+            $scope.newId = "";
+            $scope.newVal = "";
+            $scope.newExp = new Date();
+            $scope.removeId = "";
+
+            $scope.createCookie = function () {
+                cookieFactory.create($scope.newId, $scope.newVal, $scope.newExp);
+                $scope.cookies = cookieFactory.getAll();
+            };
+
+            $scope.removeCookie = function () {
+                cookieFactory.remove($scope.removeId);
+                $scope.cookies = cookieFactory.getAll();
+            };
+        }]);
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div>
+    <!--new cookie-->
+    <div class="form-group">
+        <span><em>create cookie</em></span>
+        <div class="form-control">
+            <label>id:<input type="text" ng-model="newId"></label>
+        </div>
+        <div class="form-control">
+            <label>val:<input type="text" ng-model="newVal"></label>
+        </div>
+        <div class="form-control">
+            <label>exp:<input type="date" ng-model="newExp"></label>
+        </div>
+        <input type="button" class="btn btn-primary form-control" value="create cookie" ng-click="createCookie()">
+    </div>
+    <!--remove-->
+    <div class="form-group">
+        <span><em>remove cookie</em></span>
+        <div class="form-control">
+            <label>id:<input type="text" ng-model="removeId"></label>
+        </div>
+        <input type="button" class="btn btn-primary form-control" value="remove cookie" ng-click="removeCookie()">
+    </div>
+    <!--display all-->
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2"> cookies list</th>
+            </tr>
+            <tr>
+                <th>id</th>
+                <th>value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, val) in cookies"></tr>
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- container-->
+</body>
+</html>
+<!--
+###Задача 3
+Разработайте сервис, которой можно будет использовать для записи данных в cookie. Продемонстрируйте работу сервиса.
+-->
+<!--
+angular.js:13920 ReferenceError: value is not defined
+at Object.create (lesson15_cw3.html?_ijt=tcq7dprai0pqu1bv985opn9lt6:31)
+at Scope.$scope.createCookie (lesson15_cw3.html?_ijt=tcq7dprai0pqu1bv985opn9lt6:64)
+at fn (eval at compile (angular.js:14817), <anonymous>:4:227)
+    at expensiveCheckFn (angular.js:15906)
+    at callback (angular.js:25885)
+    at Scope.$eval (angular.js:17682)
+    at Scope.$apply (angular.js:17782)
+    at HTMLInputElement.<anonymous> (angular.js:25890)
+        at defaultHandlerWrapper (angular.js:3497)
+        at HTMLInputElement.eventHandler (angular.js:3485)(anonymous function) @ angular.js:13920(anonymous function) @ angular.js:10467$apply @ angular.js:17787(anonymous function) @ angular.js:25890defaultHandlerWrapper @ angular.js:3497eventHandler @ angular.js:3485
+-->
