@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taskApp">
+<head>
+    <meta charset="utf-8">
+    <title>14 hw 2</title>
+
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script src="../libs/angular.js"></script>
+    <script>
+
+        var model = [{
+            id: 1,
+            name: "buy milk",
+            desc: "go to market and by milk",
+            date: new Date(2015, 2, 18),
+            check: false
+        }, {
+            id: 2,
+            name: "watch angularJS vids",
+            desc: "watch full length videos on some site",
+            date: new Date(2015, 2, 18),
+            check: true
+        }, {
+            id: 3,
+            name: "todo homeworks",
+            desc: "do all class- and homeworks",
+            date: new Date(2018, 2, 18),
+            check: false
+        }];
+
+        var app = angular.module("taskApp", []);
+
+        app.factory("sendForm", function () {
+            return function ($http, data) {
+                var jsonData = angular.toJson(data);
+                $http({
+                    method: "POST",
+                    url: "mysite.com",
+                    data: jsonData
+                }).then(
+                        function (response) {
+                            console.log("my Success log: " + response.statusText);
+                        },
+                        function (response) {
+                            console.log("my Error log: " + response.statusText)
+                        }
+                );
+                return jsonData;
+            }
+        });
+
+        app.controller("mainCtrl", ["$scope", "$http", "sendForm", function ($scope, $http, sendForm) {
+            $scope.data = model;
+            $scope.formData = "";
+
+            $scope.clearForm = function () {
+                $scope.taskId = "";
+                $scope.taskName = "";
+                $scope.taskDesc = "";
+                $scope.taskDate = new Date();
+                $scope.taskCheck = false;
+            };
+            $scope.editTask = function (task) {
+
+                $scope.taskId = task.id;
+                $scope.taskName = task.name;
+                $scope.taskDesc = task.desc;
+                $scope.taskCheck = task.check;
+                $scope.formData = sendForm($http, $scope.data);
+
+            };  //endof editTask
+
+            $scope.saveTask = function () {
+                $scope.data[$scope.taskId - 1] = {
+                    id: $scope.taskId,
+                    name: $scope.taskName,
+                    desc: $scope.taskDesc,
+                    date: new Date($scope.taskDate),
+                    check: $scope.taskCheck
+                };
+                $scope.formData = sendForm($http, $scope.data);
+            };
+
+            // init
+            $scope.clearForm();
+        }]);
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="container">
+    <h3>ToDo List</h3>
+    <!-- output model -->
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Completed</th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="task in data">
+            <td>
+                <button class="btn btn-edit" ng-click="editTask(task)">&#9998;</button>
+            </td>
+            <td>{{task.name}}</td>
+            <td>{{task.desc}}</td>
+            <td>{{task.date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{task.check}}</td>
+        </tr>
+    </table>
+    <br>
+    <div class="panel">
+        <form role="form">
+            <div class="form-group">
+                <label>ID:</label>
+                <input type="number" class="form-control" ng-model="taskId">
+            </div>
+            <div class="form-group">
+                <label>Task name</label>
+                <input type="text" class="form-control" ng-model="taskName">
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" class="form-control" ng-model="taskDate">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control" ng-model="taskDesc">
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" ng-model="taskCheck">Completed</label>
+            </div>
+            <button class="btn btn-default" ng-click="saveTask()">&#10004; Save</button>
+        </form>
+        <div>{{formData}}</div>
+    </div>
+</div>
+</body>
+</html>
+<!--
+###Задача 2
+Создайте приложение с интерфейсом показанном в файле template.png. Файл находится в папке Task.
+Напишите сервис, который после каждого изменения формы, будет создавать JSON обьект с новыми данными и отправлять на сервер.
+Выведите подготовленный к отправке объект на экран.
+-->
