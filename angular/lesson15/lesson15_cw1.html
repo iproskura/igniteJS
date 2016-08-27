@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        .anchor {
+            border: 1px dotted coral;
+            padding: 10px 10px 200px 10px;
+        }
+
+        .fixed-header {
+            position: fixed;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .fixed-header li {
+            display: inline-block;
+            margin-right: 20px;
+            top:0;
+        }
+    </style>
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.run(function ($anchorScroll) {
+            $anchorScroll.yOffset = 30;
+        });
+
+        app.controller('mainCtrl', ['$scope', '$location', '$anchorScroll', function ($scope, $location, $anchorScroll) {
+            $location.path("/");
+
+            $scope.gotoAnchor = function (x) {
+                $location.hash("paragraph" + x);
+            };
+        }]);
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<nav class="fixed-header">
+    <ul>
+        <li ng-click="gotoAnchor(x)" ng-repeat="x in [1, 2, 3, 4, 5, 6]">
+            Paragraph {{x}}
+        </li>
+    </ul>
+</nav>
+<div id="paragraph{{x}}" class="anchor" ng-repeat="x in [1, 2, 3, 4, 5, 6]">
+    <h4>Header {{x}}</h4>
+    <p> Paragraph inside header {{x}}</p>
+</div>
+
+</body>
+</html>
+<!--
+
+###Задача 1
+Создайте страницу с произвольным количеством блоков текста с заголовками.
+Создайте список заголовков вверху страницы. Используя сервис $anchorScroll, реализуйте навигацию на странице.
+При нажатии на заголовок в списке вверху страницы, страница должна быть автоматически прокручена до блока текста с соответствующим заголовком.
+-->
