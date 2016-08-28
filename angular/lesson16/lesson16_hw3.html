@@ -8,30 +8,58 @@
     <link href="../libs/bootstrap.css" rel="stylesheet"/>
     <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
     <script>
+        var people = [
+            {name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
+            {name: 'Masha', age: 25, email: 'm@m', employed: true},
+            {name: 'Petya', age: 27, email: 'petya@stuff', employed: true},
+            {name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
+            {name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}];
 
-
-        var app = angular.module("myApp", ["ngRoute"])
+        angular.module("myApp", ["ngRoute"])
                 .config(function ($routeProvider, $locationProvider) {
                     $routeProvider
-                            .when("/home", {templateUrl: "task/home2.html"})
-                            .when("/contact", {templateUrl: "task/contact.html"})
-                            .otherwise({redirectTo: "/view1"});
-//                    $locationProvider.html5Mode(true);
-                });
+                            .when("/home", {
+                                templateUrl: "task/home2.html",
+                                controller: "homeCtrl"
+                            })
+                            .when("/contact", {
+                                templateUrl: "task/contact.html"
+                            })
+                            .when("contact/:name/:age/:email/:employed", {
+                                templateUrl: "task/contact.html",
+                                controller: "contactCtrl"
+                            })
+                            .otherwise({redirectTo: "/home2"});
 
-        app.controller("mainCtrl", ["$scope", function ($scope) {
-            $scope.people = [{name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
-                {name: 'Masha', age: 25, email: 'm@m', employed: true},
-                {name: 'Petya', age: 27, email: 'petya@stuff', employed: true},
-                {name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
-                {name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}];
+                    $locationProvider.html5Mode({enable: true, requireBase: true});
+                })
 
+                .controller("homeCtrl", ["$scope", "$location", function ($scope, $location) {
+                    $scope.people = people;
 
-        }]);
+                    $scope.gotoPerson = function (index) {
+                        var path = "contact/"
+                                + $scope.people[index].name + "/"
+                                + $scope.people[index].age + "/"
+                                + $scope.people[index].email + "/"
+                                + $scope.people[index].employed;
+
+                        $location.path(path);  //call to VM****
+                        console.log(path);
+                    }
+
+                }])
+
+                .controller("contactCtrl", ["$scope", "$routeParams", function ($scope, $routeParams) {
+                    $scope.name = $routeParams.name;
+                    $scope.age = $routeParams.age;
+                    $scope.email = $routeParams.email;
+                    $scope.employed = $routeParams.employed === "true";
+                }]);
 
     </script>
 </head>
-<body ng-controller="mainCtrl">
+<body>
 <div class="well">
     <ul class="nav nav-tabs">
         <li><a href="#/home">home</a></li>
@@ -47,4 +75,40 @@
  адресу ‘/contact + routeParams’, где routeParams – параметры маршрутизации, созданные с помощью сервиса $routeParams,
  представляющие собой значения свойств массива people для элемента, по которому кликнул пользователь.
 * Используйте данные, переданные через $routeParams, для автозаполнения формы на странице contact
+--><!--
+<script>
+ /* VM *** content: */
+    (function ($filter, ensureSafeMemberName, ensureSafeObject, ensureSafeFunction, getStringValue, ensureSafeAssignContext, ifDefined, plus, text
+               /**/) {
+        "use strict";
+        var fn = function (s, l, a, i) {
+            var v0, v1, v2, v3 = l && ('gotoPerson' in l), v4, v5 = l && ('\u0024index' in l);
+            v2 = v3 ? l : s;
+            if (!(v3)) {
+                if (s) {
+                    v1 = s.gotoPerson;
+                }
+            } else {
+                v1 = l.gotoPerson;
+            }
+            ensureSafeObject(v1, text);
+            if (v1 != null) {
+                ensureSafeFunction(v1, text);
+                if (!(v5)) {
+                    if (s) {
+                        v4 = s.$index;
+                    }
+                } else {
+                    v4 = l.$index;
+                }
+                ensureSafeObject(v4, text);
+                v0 = ensureSafeObject(v2.gotoPerson(ensureSafeObject(v4, text)), text);
+            } else {
+                v0 = undefined;
+            }
+            return v0;
+        };
+        return fn;
+    })
+</script>
 -->

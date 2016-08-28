@@ -4,8 +4,8 @@
     <label>email: <input type="email" class="input-lg" name="userEmail"/></label>
     <label>employed: <input type="checkbox" name="employed"></label>
 </form>
-<ul ng-repeat="person in people">
-    <li>{{person.name}}</li>
+<ul>
+    <li ng-repeat="person in people" ng-click="gotoPerson($index)">{{$index}}:{{person.name}}</li>
 </ul>
 <!--
 var people = [{name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false},
