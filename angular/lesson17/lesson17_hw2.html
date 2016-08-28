@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.data = ["para1", "para2", "para3", "para4", "para5", "para6", "para7"];
+        }]);
+
+        app.directive("paragraphGenerator", function () {
+            return {
+                restrict: "A",
+                replace: true,
+                scope: {
+                    array: "=paragraphGenerator"
+                },
+                template: "<p ng-repeat='item in array track by $index'>das is: {{item}}</p>"
+            };
+        });
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<span>generate p's:</span>
+<div paragraph-generator="data"></div>
+</body>
+</html>
+<!--
+###Задача 2
+Создайте директиву, которая на основе массива будет создавать определенное количество параграфов:
+1) генерация должна происходить не с помощью jqLite, а с помощью шаблона,
+2) директиву можно применить только как атрибут,
+3) сгенерированный контент должен полностью заменить собой элемент, к которому применяется директива,
+4) у неё должен быть независимый scope.
+-->
