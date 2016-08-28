@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", "$interval", function ($scope, $interval) {
+            $scope.counter = 0;
+
+            $scope.startCounter = function () {
+                interval = $interval(function () {
+                    $scope.counter++;
+                }, 1000)
+            }
+        }]);
+
+        app.directive("buttonDir", function () {
+            return{
+                restrict: "A",
+                templateUrl: "template/counter.html",
+
+                controller: "mainCtrl"
+            }
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <div button-dir></div>
+</body>
+</html>
+<!--
+###Задача 1
+Создайте директиву, которая создает кнопку, при нажатии на которую запускается счетчик
+(на экран начинают выводиться числа в возрастающей последовательности с интервалом в 1 с).
+-->
