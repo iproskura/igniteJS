@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = [1, 2, 3, 4, 5]
+        }]);
+
+        app.directive("arrayList", function () {
+            return {
+                scope: {
+                    items: "=arrayList"
+                },
+                template: "<h1>List: </h1><ul><li ng-repeat='item in items track by $index'>{{item}}</li></ul>"
+            }
+        });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div array-List="items"></div>
+</body>
+</html>
+<!--
+###Задача 1
+Создайте пользовательскую директиву, которой можно передать массив, а результатом её работы будет сгенерированный список.
+-->
+
