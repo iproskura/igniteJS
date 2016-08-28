@@ -1,0 +1,22 @@
+        <form role="form">
+            <h3>form</h3>
+
+            <div class="form-group">
+                <label>{{data[0].name}}</label>
+                <input type="{{data[0].type}}" class="form-control" ng-model="{{data[0].name}}">
+            </div>
+            <div class="form-group">
+                <label>{{data[1].name}}</label>
+                <input type="{{data[1].type}}" class="form-control" ng-model="{{data[1].name}}">
+            </div>
+            <div class="form-group">
+                <label>{{data[2].name}}</label>
+                <input type="{{data[2].type}}" class="form-control" ng-model="{{data[2].name}}">
+            </div>
+            <div class="form-group">
+                <label>{{data[3].name}}</label>
+                <input type="{{data[3].type}}" class="form-control" ng-model="{{data[3].name}}">
+            </div>
+
+            <button class="btn btn-default" ng-click="addNewTask()">Add task</button>
+        </form>
