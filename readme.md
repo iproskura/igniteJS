@@ -19,7 +19,7 @@ lesson 16:  classwork:  ++
 lesson 17:  classwork:  +*-
             homework:   +++
 lesson 18:  classwork:  +++
-            homework:   ---
+            homework:   --+
 ```
 
 _JavaScript:_
