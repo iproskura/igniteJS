@@ -18,7 +18,7 @@ lesson 16:  classwork:  ++
             homework:   ++*
 lesson 17:  classwork:  +*-
             homework:   +++
-lesson 18:  classwork:  +--
+lesson 18:  classwork:  ++-
             homework:   ---
 ```
 
