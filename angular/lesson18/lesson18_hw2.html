@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        .red {
+            color: red
+        }
+    </style>
+    <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = ["para1", "para2", "para3", "para4", "para5", "para6"]
+        }]);
+
+        app.directive("makeUl", function () {
+            return {
+                restrict: "A",
+                priority: 2,
+                link: function (scope, elem, attrs) {
+                    var items = scope.items;
+                    var ul = angular.element("<ul></ul>");
+
+                    for (var i = 0; i < items.length; i++) {
+                        ul.append(angular.element("<li>").html(items[i]));
+                    }
+                    elem.append(ul);
+                } //post
+            }
+        });  // makeUlDir
+
+        app.directive("styleUl", function () {
+            return {
+                restrict: "A",
+                priority: 3,
+                link: function (scope, elem, attrs) {
+                    var lis = elem.find("li");
+
+                    for (var i = 0; i < lis.length; i++) {
+                        if (i % 2) {
+                            angular.element(lis[i]).addClass("red");
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well" make-ul style-ul></div>
+</body>
+</html>
+<!--
+###Задача 2
+Создайте две директивы. Первая создает список ul с произвольным количеством элементов.
+Вторая директива добавляет четным элементам списка CSS класс ‘red’ со следующим значением:
+```
+.red {
+color: red
+}
+```
+Обе директивы используются в качестве атрибутов и применяются к одному и тому же элементу.
+ При решении задачи используйте приоритет директив.-
+->
