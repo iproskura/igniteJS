@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../libs/angular.js"></script>
+    <link href="../libs/bootstrap.css" rel="stylesheet"/>
+    <link href="../libs/bootstrap-theme.css" rel="stylesheet"/>
+    <script>
+
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", ["$scope", function ($scope) {
+            $scope.items = [
+                {name: "Table", price: 44.10},
+                {name: "Chair", price: 21.20},
+                {name: "Pillow", price: 12.20},
+                {name: "Picture", price: 112.70},
+                {name: "Lamp", price: 28.31}
+            ]
+
+            $scope.curr = $scope.items[0].price;
+            $scope.currLink = function (key) {
+                $scope.curr = $scope.items[key].price;
+            }
+        }]);
+
+        app.directive("makeNav", function () {
+            return {
+                restrict: "A",
+                template: "<ul><li ng-repeat='item in items track by $index'<span ng-click='currLink($index)'>{{item.name}}</span></li></ul>",
+                scope: false,
+                controller: "mainCtrl"
+            }
+        });
+
+        app.directive("takeItems", function () {
+            return {
+                restrict: "A",
+                template: "<p>{{curr}}</p>",
+                scope: false,
+                controller: "mainCtrl"
+            }
+        })
+
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div class="well" make-nav></div>
+<div class="well" take-items></div>
+</body>
+</html>
+<!--
+###Задача 1
+Есть массив items:
+```
+[
+{ name: "Table", price: 44.10 },
+{ name: "Chair", price: 21.20 },
+{ name: "Pillow", price: 12.20 },
+{ name: "Picture", price: 112.70 },
+{ name: "Lamp", price: 28.31 }
+];
+```
+Создайте две директивы. Первая создает панель меню с элементами, взятыми из свойства name массива items. Вторая директива реализует следующее:
+* при клике по элементу на панели меню, пользователю показывается соответственный контент, взятый из свойства price массива items.
+Директивы используют общий контроллер.
+-->
