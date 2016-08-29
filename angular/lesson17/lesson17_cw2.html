@@ -11,18 +11,24 @@
         var app = angular.module("myApp", []);
 
         app.controller("mainCtrl", ["$scope", function ($scope) {
-            $scope.data = [
+/*            $scope.data = [
                 {name: "username", type: "text"},
                 {name: "login", type: "text"},
                 {name: "password", type: "password"},
-                {name: "email", type: "email"}]
+                {name: "email", type: "email"}]*/
         }]);
 
         app.directive("dirForm", function () {
             return {
                 restrict: "A",
                 templateUrl: "templates/form.html",
-                controller: "mainCtrl"
+                controller: function ($scope) {
+                    $scope.data = [
+                        {name: "username", type: "text"},
+                        {name: "login", type: "text"},
+                        {name: "password", type: "password"},
+                        {name: "email", type: "email"}]
+                }
             }
         });
 
@@ -39,7 +45,3 @@
 Username, login, password, email.
 -->
 
-<!--
-Error: [$parse:syntax] Syntax Error: Token '{' invalid key at column 2 of the expression [{{data[0].name}}] starting at [{data[0].name}}].
-http://errors.angularjs.org/1.5.8/$parse/syntax?p0=%7B&p1=invalid%20key&p2=2&p3=%7B%7Bdata%5B0%5D.name%7D%7D&p4=%7Bdata%5B0%5D.name%7D%7D
--->

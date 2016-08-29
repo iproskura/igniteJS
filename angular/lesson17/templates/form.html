@@ -3,19 +3,19 @@
 
     <div class="form-group">
         <label>{{data[0].name}}</label>
-        <input type="{{data[0].type}}" class="form-control" ng-model="{{data[0].name}}">
+        <input type="text" class="form-control" ng-model="fUsername">
     </div>
     <div class="form-group">
         <label>{{data[1].name}}</label>
-        <input type="{{data[1].type}}" class="form-control" ng-model="{{data[1].name}}">
+        <input type="text" class="form-control" ng-model="fLogin">
     </div>
     <div class="form-group">
         <label>{{data[2].name}}</label>
-        <input type="{{data[2].type}}" class="form-control" ng-model="{{data[2].name}}">
+        <input type="password" class="form-control" ng-model="fPassword">
     </div>
     <div class="form-group">
         <label>{{data[3].name}}</label>
-        <input type="{{data[3].type}}" class="form-control" ng-model="{{data[3].name}}">
+        <input type="email" class="form-control" ng-model="fEmail">
     </div>
 
     <button class="btn btn-default" ng-click="addNewTask()">Add task</button>
