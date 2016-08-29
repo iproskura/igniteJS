@@ -10,14 +10,6 @@
 
         var app = angular.module("myApp", []);
 
-        app.controller("mainCtrl", ["$scope", function ($scope) {
-/*            $scope.data = [
-                {name: "username", type: "text"},
-                {name: "login", type: "text"},
-                {name: "password", type: "password"},
-                {name: "email", type: "email"}]*/
-        }]);
-
         app.directive("dirForm", function () {
             return {
                 restrict: "A",
@@ -28,6 +20,7 @@
                         {name: "login", type: "text"},
                         {name: "password", type: "password"},
                         {name: "email", type: "email"}]
+
                 }
             }
         });
