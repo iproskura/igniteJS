@@ -10,14 +10,48 @@
 
         var app = angular.module("myApp", []);
 
-        app.controller("mainCtrl", ["$scope", function ($scope) {
+        app.controller("mainCtrl", ["$scope", "$interval", "$filter", function ($scope, $interval, $filter) {
+
+            var timer = 0;
+            $scope.displayTime = $filter('date')(timer, "HH:mm:ss.sss", "UTC").slice(0, -2);
+
+            var counter;
+
+            $scope.start = function () {
+                if (angular.isUndefined(counter)) {
+                    counter = $interval(function () {
+                        timer += 25;
+                        $scope.displayTime = $filter('date')(timer, "HH:mm:ss.sss", "UTC").slice(0, -2);
+                    }, 25);
+                }else {
+                    return counter;
+                }
+
+
+            };
+
+            $scope.stop = function () {
+                $interval.cancel(counter);
+                counter = undefined;
+            };
+
+            $scope.reset = function () {
+                timer = 0;
+                $scope.displayTime = $filter('date')(timer, "HH:mm:ss.sss", "UTC").slice(0, -2);
+            }
+
 
         }]);
 
     </script>
 </head>
 <body ng-controller="mainCtrl">
-
+<div class="myWatch">
+    <h1>{{displayTime}}</h1>
+    <button class="btn-lg btn-info" ng-click="start()">&blacktriangleright; Start</button>
+    <button class="btn-lg btn-danger" ng-click="stop()">&blacksquare; Stop</button>
+    <button class="btn-lg btn-default" ng-click="reset()">&cemptyv; Reset</button>
+</div>
 </body>
 </html>
 <!--
