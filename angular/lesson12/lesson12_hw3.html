@@ -37,7 +37,10 @@
         }, {
             que: "q5",
             ans: ["5a", "5o", "5e", "5u", "5y"]
-        }];
+        }, {
+            answers: ["4", "3", "2", "1", "0"]
+        }
+        ];
 
         var myApp = angular.module("myApp", []);
         myApp.controller("mainCtrl", ["$scope", function ($scope) {
@@ -45,6 +48,16 @@
             $scope.data = model;
             $scope.question = 0;
             $scope.result = [5];
+            $scope.correctCount = 0;
+
+            $scope.countCorrect = function () {
+                for (var i = 0; i < data[5].answers.length; i++) {
+                    if($scope.data[4].answers[i] === $scope.result[i]){
+                        $scope.correctCount ++;
+                    }
+                }
+                console.log($scope.result);
+            };
 
         }]); // endof mainCtrl
     </script>
@@ -113,6 +126,10 @@
         <p>Q3 ans is:{{data[2].ans[result[2]]}}</p>
         <p>Q4 ans is:{{data[3].ans[result[3]]}}</p>
         <p>Q5 ans is:{{data[4].ans[result[4]]}}</p>
+    </div>
+    <div>
+        <input type="button" value="show correct count" ng-click="countCorrect()">
+        <h5>correct answers count: {{correctCount}}</h5>
     </div>
 </div>
 </body>
