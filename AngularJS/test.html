@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="libs/angular.js"></script>
+
+  <script>
+    angular.module("myApp", [])
+        .controller("mainCtrl", ["$scope", function ($scope) {
+          $scope.val = 1;
+        }])
+        .directive("myDir", function ($scope) {
+          return{
+            restriction: 'AE',
+            scope: {localVal: "=val"},
+            template: "{{localVal}}",
+            link: function (scope, elem, attrs) {
+//              scope.val = 5;
+              alert("2");
+            },
+            compile: function (scope, elem, attrs) {
+              alert("1");
+            }
+
+          }
+        })
+
+  </script>
+
+</head>
+<body ng-controller="mainCtrl">
+
+<my-dir val="7"></my-dir>
+</body>
+</html>

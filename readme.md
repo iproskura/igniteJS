@@ -1,7 +1,29 @@
 # igniteJS
 ignite js course homework and classwork solutions by Igor Proskura
-######checklist:
-_Angular_
+
+_ReactJS_
+```
+lesson 19:  classwork:  ---
+            homework:   ---
+lesson 20:  classwork:  ---
+            homework:   ---
+lesson 21:  classwork:  ---
+            homework:   ---
+lesson 22:  classwork:  ---
+            homework:   ---
+lesson 23:  classwork:  ---
+            homework:   ---
+lesson 24:  classwork:  ---
+            homework:   ---
+lesson 25:  classwork:  ---
+            homework:   ---
+lesson 26:  classwork:  ---
+            homework:   ---
+```
+
+
+
+_AngularJS_
 ```
 lesson 11:  classwork:  +++
             homework:   ++
@@ -26,19 +48,14 @@ _JavaScript:_
 ```
 lesson 1:   classwork:  +++
             homework:   +++
-
 lesson 2:   classwork:  +++
             homework:   +++
-
 lesson 3:   classwork:  +++
             homework:   +++
-
 lesson 4:   classwork:  +++
             homework:   +++
-
 lesson 5:   classwork:  +++
             homework:   +++
-___________________________
 
 lesson 6:   classwork:  +++
             homework:   +++
